@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/shopping-mall
+    username: ksubin
+    password: 1396
+    driver-class-name: com.mysql.jdbc.Driver
+  jpa:
+    open-in-view: false
+    defer-datasource-initialization: true
+    hibernate.ddl-auto: create
+    show-sql: true
+server:
+  port: 8090
