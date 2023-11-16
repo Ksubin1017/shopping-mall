@@ -1,0 +1,21 @@
+footer {
+    width: 1600px;
+    background-color:#f8f9fa;
+    padding:1rem 0;
+    margin-left: 160px;
+}
+
+.footer-message {
+    font-weight: bold;
+    font-size:0.9rem;
+    color:#545e6f;
+    margin-bottom:0.3rem;
+    margin:0 0 0 0.6rem;
+}
+
+
+.footer-copyright {
+    font-size:0.9rem;
+    color:#545e6f;
+    margin:0.6rem;
+}

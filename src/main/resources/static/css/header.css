@@ -1,0 +1,60 @@
+.header-sec01 {
+    display: flex;
+    width: 1600px;
+    margin: 0 auto;
+    margin-bottom: 40px;
+}
+
+.top-logo {
+    margin-left: 30px;
+    margin-top: 25px;
+
+}
+
+.top-search {
+    width: 500px;
+    margin: 0 auto;
+    margin-top: 50px;
+    display: flex;
+}
+
+.top-search input {
+    width: 500px;
+    border: none;
+    border-bottom: solid 2px black;
+    outline: none;
+}
+
+.top-search img {
+    width: 35px;
+    height: 35px;
+}
+
+.top-icon {
+    margin-top: 20px;
+    margin-right: 20px;
+}
+
+.top-nav {
+    list-style: none;
+    text-align: center;
+}
+
+.top-nav li {
+    display: inline;
+    margin-right: 40px;
+}
+
+.top-nav li:hover a {
+    color: burlywood;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:visited, a:active {
+    color: black;
+}
+
