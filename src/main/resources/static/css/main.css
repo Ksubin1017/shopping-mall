@@ -8,7 +8,7 @@
     margin-bottom: 20px;
 }
 
-.best {
+.mainbest {
     display: grid;
     grid-template-columns: repeat(4, 1fr); /* 2개의 열 생성 */
     grid-template-rows: repeat(2, 1fr); /* 4개의 행 생성 */
@@ -16,7 +16,7 @@
     margin-left: 30px;
 }
 
-.best-li {
+.mainbest-li {
     list-style: none;
     border: 1px solid #ccc;
     margin-bottom: 170px;
@@ -29,11 +29,11 @@
     height: 500px;
 }
 
-.best-product-name {
+.mainbest-product-name {
     margin-top: 20px;
 }
 
-.new {
+.mainnew {
     display: grid;
     grid-template-columns: repeat(4, 1fr); /* 2개의 열 생성 */
     grid-template-rows: repeat(2, 1fr); /* 4개의 행 생성 */
@@ -41,7 +41,7 @@
     margin-left: 30px;
 }
 
-.new-li {
+.mainnew-li {
     list-style: none;
     border: 1px solid #ccc;
     margin-bottom: 170px;
@@ -54,6 +54,6 @@
     height: 500px;
 }
 
-.new-product-name {
+.mainnew-product-name {
     margin-top: 20px;
 }
