@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form method="post" action="/productEnroll", enctype="multipart/form-data">
+        상품 이름<br>
+        <input type="text" name="productName"><br>
+        상품 가격<br>
+        <input type="text" name="productPrice"><br>
+        상품 카테고리
+        <select name="productCategory">
+            <option value="outer">OUTER</option>
+            <option value="top">TOP</option>
+            <option value="pants">PANTS</option>
+            <option value="shoes">SHOES</option>
+            <option value="acc">ACC</option>
+        </select>
+        <br>
+        상품 설명<br>
+        <input type="text" name="productDescription"><br>
+        상품 메인사진<br>
+        <input type="file" name="productMainFile"><br>
+        상품 정보사진<br>
+        <input type="file" name="productInfoFile"><br>
+        <input type="submit" value="등록하기">
+    </form>
+</body>
+</html>

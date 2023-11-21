@@ -9,24 +9,23 @@
 </head>
 <body>
 <div th:replace="/header :: header"></div>
-<!-- TODO: best 아이템 24개 노출-->
+
 <main class="acc-page">
   <div class="pageinfo">
     ACCESSORY
   </div>
-  <div class="acc">
 
-    <div class="acc-li">
+  <div class="acc">
+    <div class="acc-li" th:each="acc : ${acc}">
       <div>
-        <img src="/images/jeans.jpg" class="acc-img">
+        <img th:src="@{'/images/' + ${acc.productMainName}}" class="acc-img">
       </div>
-      <div class="acc-product-name">상품명</div>
-      <div>사이즈</div>
-      <div>가격</div>
+      <div class="acc-product-name" th:text="'상품명  ' + ${acc.productName}">상품명</div>
+      <div th:text="가격 + ${acc.productPrice}">가격</div>
       <div>리뷰</div>
     </div>
-
   </div>
+
 </main>
 
 <div class="footer" th:replace="/footer :: footer"></div>
