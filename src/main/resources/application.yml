@@ -9,5 +9,21 @@ spring:
     defer-datasource-initialization: true
     hibernate.ddl-auto: create
     show-sql: true
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 20MB
+  devtools:
+    livereload:
+      enabled: true
+    remote:
+      restart:
+        enabled: true
+
+
+upload:
+  path: D:/Intellij/workspace/shopping-mall/src/main/resources/static/images/
+
 server:
   port: 8090
+

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en", xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <title>Awesome</title>
@@ -9,94 +9,22 @@
 </head>
 <body>
 <div th:replace="/header :: header"></div>
-<!-- TODO: best 아이템 24개 노출-->
+
 <main class="top-page">
-  <div class="pageinfo">
-    TOP
-  </div>
-  <div class="top">
-
-    <div class="top-li">
-      <div>
-        <img src="/images/jeans.jpg" class="top-img">
-      </div>
-      <div class="top-product-name">상품명</div>
-      <div>사이즈</div>
-      <div>가격</div>
-      <div>리뷰</div>
+    <div class="pageinfo">
+      TOP
     </div>
 
-    <div class="top-li">
-      <div>
-        <img src="/images/jeans.jpg" class="top-img">
+    <div class="top">
+      <div class="top-li" th:each="top : ${top}">
+        <div>
+          <img th:src="@{'/images/' + ${top.productMainName}}" class="top-img">
+        </div>
+        <div class="top-product-name" th:text="'상품명  ' + ${top.productName}">상품명</div>
+        <div th:text="가격 + ${top.productPrice}">가격</div>
+        <div>리뷰</div>
       </div>
-      <div class="top-product-name">상품명</div>
-      <div>사이즈</div>
-      <div>가격</div>
-      <div>리뷰</div>
     </div>
-
-    <div class="top-li">
-      <div>
-        <img src="/images/jeans.jpg" class="top-img">
-      </div>
-      <div class="top-product-name">상품명</div>
-      <div>사이즈</div>
-      <div>가격</div>
-      <div>리뷰</div>
-    </div>
-
-    <div class="top-li">
-      <div>
-        <img src="/images/jeans.jpg" class="top-img">
-      </div>
-      <div class="top-product-name">상품명</div>
-      <div>사이즈</div>
-      <div>가격</div>
-      <div>리뷰</div>
-    </div>
-
-    <div class="top-li">
-      <div>
-        <img src="/images/jeans.jpg" class="top-img">
-      </div>
-      <div class="top-product-name">상품명</div>
-      <div>사이즈</div>
-      <div>가격</div>
-      <div>리뷰</div>
-    </div>
-
-    <div class="top-li">
-      <div>
-        <img src="/images/jeans.jpg" class="top-img">
-      </div>
-      <div class="top-product-name">상품명</div>
-      <div>사이즈</div>
-      <div>가격</div>
-      <div>리뷰</div>
-    </div>
-
-    <div class="top-li">
-      <div>
-        <img src="/images/jeans.jpg" class="top-img">
-      </div>
-      <div class="top-product-name">상품명</div>
-      <div>사이즈</div>
-      <div>가격</div>
-      <div>리뷰</div>
-    </div>
-
-    <div class="top-li">
-      <div>
-        <img src="/images/jeans.jpg" class="top-img">
-      </div>
-      <div class="top-product-name">상품명</div>
-      <div>사이즈</div>
-      <div>가격</div>
-      <div>리뷰</div>
-    </div>
-
-  </div>
 </main>
 
 <div class="footer" th:replace="/footer :: footer"></div>
