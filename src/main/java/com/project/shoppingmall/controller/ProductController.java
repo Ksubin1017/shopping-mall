@@ -43,7 +43,7 @@ public class ProductController {
     }
 
     @GetMapping("/outer")
-    public String outer(Model model, @PageableDefault(page = 0, size=1, sort = "productCreadtedAt", direction = Sort.Direction.DESC) Pageable pageable) {
+    public String outer(Model model, @PageableDefault(page = 0, size=16, sort = "productCreadtedAt", direction = Sort.Direction.DESC) Pageable pageable) {
 
         Page<Product> outerList = productService.outer(pageable);
 
@@ -71,7 +71,7 @@ public class ProductController {
     }
 
     @GetMapping("/top")
-    public String top(Model model, @PageableDefault(page = 0, size=24, sort = "productCreadtedAt", direction = Sort.Direction.DESC) Pageable pageable) {
+    public String top(Model model, @PageableDefault(page = 0, size=16, sort = "productCreadtedAt", direction = Sort.Direction.DESC) Pageable pageable) {
         Page<Product> topList = productService.top(pageable);
 
         int nowPage = topList.getPageable().getPageNumber() + 1;  // 사용자에게 보여주기 위한 숫자
@@ -98,7 +98,7 @@ public class ProductController {
     }
 
     @GetMapping("/pants")
-    public String pants(Model model, @PageableDefault(page = 0, size=24, sort = "productCreadtedAt", direction = Sort.Direction.DESC) Pageable pageable) {
+    public String pants(Model model, @PageableDefault(page = 0, size=16, sort = "productCreadtedAt", direction = Sort.Direction.DESC) Pageable pageable) {
         Page<Product> pantsList = productService.pants(pageable);
 
         int nowPage = pantsList.getPageable().getPageNumber() + 1;  // 사용자에게 보여주기 위한 숫자
@@ -125,7 +125,7 @@ public class ProductController {
     }
 
     @GetMapping("/shoes")
-    public String shoes(Model model, @PageableDefault(page = 0, size=24, sort = "productCreadtedAt", direction = Sort.Direction.DESC) Pageable pageable) {
+    public String shoes(Model model, @PageableDefault(page = 0, size=16, sort = "productCreadtedAt", direction = Sort.Direction.DESC) Pageable pageable) {
         Page<Product> shoesList = productService.shoes(pageable);
 
         int nowPage = shoesList.getPageable().getPageNumber() + 1;  // 사용자에게 보여주기 위한 숫자
@@ -152,7 +152,7 @@ public class ProductController {
     }
 
     @GetMapping("/acc")
-    public String acc(Model model, @PageableDefault(page = 0, size=24, sort = "productCreadtedAt", direction = Sort.Direction.DESC) Pageable pageable) {
+    public String acc(Model model, @PageableDefault(page = 0, size=16, sort = "productCreadtedAt", direction = Sort.Direction.DESC) Pageable pageable) {
         Page<Product> accList = productService.acc(pageable);
 
         int nowPage = accList.getPageable().getPageNumber() + 1;  // 사용자에게 보여주기 위한 숫자
