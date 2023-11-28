@@ -5,6 +5,8 @@ import com.project.shoppingmall.dto.ProductDTO;
 import com.project.shoppingmall.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -56,33 +58,28 @@ public class ProductService {
         return storedInfoFileName;
     }
 
-    public List<Product> outer() {
-        List<Product> outer = productRepository.findByProductCategory("outer");
+    public Page<Product> outer(Pageable pageable) {
 
-        return outer;
+        return productRepository.findByProductCategory("outer", pageable);
     }
 
-    public List<Product> top() {
-        List<Product> top = productRepository.findByProductCategory("top");
+    public Page<Product> top(Pageable pageable) {
 
-        return top;
+        return productRepository.findByProductCategory("top", pageable);
     }
 
-    public List<Product> pants() {
-        List<Product> pants = productRepository.findByProductCategory("pants");
+    public Page<Product> pants(Pageable pageable) {
 
-        return pants;
+        return productRepository.findByProductCategory("pants", pageable);
     }
 
-    public List<Product> shoes() {
-        List<Product> shoes = productRepository.findByProductCategory("shoes");
+    public Page<Product> shoes(Pageable pageable) {
 
-        return shoes;
+        return productRepository.findByProductCategory("shoes", pageable);
     }
 
-    public List<Product> acc() {
-        List<Product> acc = productRepository.findByProductCategory("acc");
+    public Page<Product> acc(Pageable pageable) {
 
-        return acc;
+        return productRepository.findByProductCategory("acc", pageable);
     }
 }

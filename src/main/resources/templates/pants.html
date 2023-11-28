@@ -26,6 +26,12 @@
     </div>
   </div>
 
+  <a th:href="@{/pants(page = ${previousPage})}" th:text="이전"></a>
+  <th:block th:each="page : ${#numbers.sequence(startPage, endPage)}">
+    <a th:if="${page != nowPage}" th:href="@{/pants(page = ${page - 1})}" th:text="${page}"></a>
+    <strong th:if="${page == nowPage}" th:text="${page}"></strong>
+  </th:block>
+  <a th:href="@{/pants(page = ${nextPage})}" th:text="다음"></a>
 </main>
 
 <div class="footer" th:replace="/footer :: footer"></div>
