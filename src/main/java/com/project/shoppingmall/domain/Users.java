@@ -18,7 +18,7 @@ public class Users {
 
     @Id
     @Column(nullable = false, name="user_id")
-    private String Id;
+    private String userId;
 
     @Column(nullable = false, name="user_password")
     private String pwd;
@@ -38,10 +38,15 @@ public class Users {
     @Column(name="user_birth")
     private String birth;
 
-    protected Users() {}
+    @Column(name="user_class")
+    private String userClass;
 
-    public Users(String id, String pwd, String name, String address, String phone, String email, String birth) {
-        this.Id = id;
+    protected Users() {
+
+    }
+
+    public Users(String userId, String pwd, String name, String address, String phone, String email, String birth) {
+        this.userId = userId;
         this.pwd = pwd;
         this.name = name;
         this.address = address;
@@ -50,8 +55,8 @@ public class Users {
         this.birth = birth;
     }
 
-    public static Users of(String id, String pwd, String name, String address, String phone, String email, String birth) {
-        return new Users(id, pwd, name, address, phone, email, birth);
+    public static Users of(String userId, String pwd, String name, String address, String phone, String email, String birth) {
+        return new Users(userId, pwd, name, address, phone, email, birth);
     }
 
 }
