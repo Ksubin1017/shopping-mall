@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AWESOME</title>
+
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/footer.css">
+</head>
+<body>
+<div th:replace="/header :: header"></div>
+
+    <div class="singUpInfo">
+        AWESOME
+    </div>
+
+    <form name="singUpForm" action="/signUpComp" method = "post">
+        <div class="inputId">
+            ID
+            <input type="text" name="userId">
+        </div>
+
+        <div class="inputPwd">
+            PASSWORD
+            <input type="password" name="pwd">
+        </div>
+
+        <div class="inputName">
+            NAME
+            <input type="text" name="name">
+        </div>
+
+        <div class="inputAddr">
+            ADDRESS
+            <input type="text" name="address">
+        </div>
+
+        <div class="inputAddr">
+            PHONE
+            <input type="text" name="phone">
+        </div>
+
+        <div class="inputEmail">
+            EMAIL
+            <input type="text" name="email">
+        </div>
+
+        <div class="inputBirth">
+            BIRTH
+            <input type="text" name="birth">
+        </div>
+
+        <input class="signUpSubmit" type="submit" value="JOIN">
+    </form>
+
+    <div class="footer" th:replace="/footer :: footer"></div>
+</body>
+</html>

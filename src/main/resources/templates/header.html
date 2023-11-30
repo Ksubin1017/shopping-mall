@@ -16,11 +16,19 @@
           <img src="/images/search.png">
       </div>
 
-      <div class="top-icon">
-          <strong><a href="#">join</a></strong>
+        <div class="top-icon" th:if="${session.userId == null || session.userId == 'anonymousUser'}">
+            <strong><a href="/signUp">JOIN</a></strong>
           &nbsp;&nbsp;
-          <strong><a href="#">login</a></strong>
-      </div>
+            <strong><a href="/loginForm">LOGIN</a></strong>
+        </div>
+
+        <div class="top-icon" th:if="${session.userId != null && session.userId != 'anonymousUser'}">
+            <strong th:text="${session.userId}"> </strong>
+            &nbsp;&nbsp;
+            <strong><a href="#">MYPAGE</a></strong>
+
+            <strong><a href="/logout">LOGOUT</a></strong>
+        </div>
     </div>
 
   <div class="header-sec02">
