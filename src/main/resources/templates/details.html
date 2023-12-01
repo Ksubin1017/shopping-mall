@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AWESOME</title>
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/footer.css">
+</head>
+<body>
+    <div th:replace="/header :: header"></div>
+
+    <main class="productDetails">
+      <div class="productInfoContainer">
+        <div class="detailsImgContainer">
+            <img th:src="@{'/images/' + ${product.productInfoName}}" class="detail-img">
+        </div>
+
+        <div>
+            <div th:text="${product.productName}"></div>
+            <hr>
+            <div th:text="'판매가' + ${product.productPrice} + '원'"></div>
+        </div>
+      </div>
+
+      <div class="productDetailsInfo">
+          <div class="productDescription">
+              <div>
+                  <div th:text="${product.productName}"></div>
+                  <div class="productDescriptionImg">
+                      <img th:src="@{'/images/' + ${product.productInfoName}}" class="detail-img">
+                  </div>
+
+              </div>
+              <div th:text="${product.productDescription}"></div>
+
+          </div>
+      </div>
+    </main>
+
+    <div class="footer" th:replace="/footer :: footer"></div>
+</body>
+</html>

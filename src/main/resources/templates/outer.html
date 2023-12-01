@@ -18,7 +18,9 @@
   <div class="outer">
     <div class="outer-li" th:each="outer : ${outer}">
       <div>
-        <img th:src="@{'/images/' + ${outer.productMainName}}" class="outer-img">
+        <a th:href="@{/details(productId=${outer.productId})}">
+          <img th:src="@{'/images/' + ${outer.productMainName}}" class="outer-img">
+        </a>
       </div>
       <div class="outer-product-name" th:text="'상품명  ' + ${outer.productName}">상품명</div>
       <div th:text="가격 + ${outer.productPrice}">가격</div>

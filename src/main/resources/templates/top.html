@@ -18,7 +18,9 @@
     <div class="top">
       <div class="top-li" th:each="top : ${top}">
         <div>
-          <img th:src="@{'/images/' + ${top.productMainName}}" class="top-img">
+            <a th:href="@{/details(productId=${top.productId})}">
+                <img th:src="@{'/images/' + ${top.productMainName}}" class="top-img">
+            </a>
         </div>
         <div class="top-product-name" th:text="'상품명  ' + ${top.productName}">상품명</div>
         <div th:text="가격 + ${top.productPrice}">가격</div>
