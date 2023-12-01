@@ -82,4 +82,9 @@ public class ProductService {
 
         return productRepository.findByProductCategory("acc", pageable);
     }
+
+    public Product productDetails(Long productId) {
+
+        return productRepository.findByProductId(productId);
+    }
 }

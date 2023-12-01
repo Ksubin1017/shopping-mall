@@ -18,7 +18,9 @@
   <div class="acc">
     <div class="acc-li" th:each="acc : ${acc}">
       <div>
-        <img th:src="@{'/images/' + ${acc.productMainName}}" class="acc-img">
+        <a th:href="@{/details(productId=${acc.productId})}">
+          <img th:src="@{'/images/' + ${acc.productMainName}}" class="acc-img">
+        </a>
       </div>
       <div class="acc-product-name" th:text="'상품명  ' + ${acc.productName}">상품명</div>
       <div th:text="가격 + ${acc.productPrice}">가격</div>
