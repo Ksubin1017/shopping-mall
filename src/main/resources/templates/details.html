@@ -10,8 +10,8 @@
     <div th:replace="/header :: header"></div>
 
     <main class="productDetails">
-      <div class="productInfoContainer">
-        <div class="detailsImgContainer">
+      <div class="productInfo-container">
+        <div class="detailsImg-container">
             <img th:src="@{'/images/' + ${product.productInfoName}}" class="detail-img">
         </div>
 
@@ -19,11 +19,12 @@
             <div th:text="${product.productName}"></div>
             <hr>
             <div th:text="'판매가' + ${product.productPrice} + '원'"></div>
+            <a th:href="@{/payment(productId=${product.productId})}">BUY IT NOW</a>
         </div>
       </div>
 
-      <div class="productDetailsInfo">
-          <div class="productDescription">
+      <div class="product-detailsInfo">
+          <div class="product-description">
               <div>
                   <div th:text="${product.productName}"></div>
                   <div class="productDescriptionImg">

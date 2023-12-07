@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Awesome</title>
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/footer.css">
+</head>
+<body>
+<div th:replace="/header :: header"></div>
+
+    <main class="payment-page">
+        <div class="pageinfo">
+
+        </div>
+
+        <div class="product-contianer">
+            <div>
+                <img th:src="@{'/images/' + ${product.productMainName}}" class="payment-img">
+            </div>
+
+            <div class="payment-productName" th:text="${product.getProductName()}"></div>
+            <div class="payment-productPrice" th:text="${product.getProductPrice()}"></div>
+            <div class="user-address" th:text="${users.getAddress()}"></div>
+            <button onclick="requestPay()">결제하기</button>
+        </div>
+    </main>
+
+<div class="footer" th:replace="/footer :: footer"></div>
+</body>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+<script th:inline="javascript">
+
+    var product = /*[[${product}]]*/ {};
+    var users = /*[[${users}]]*/ {};
+
+    function requestPay() {
+        var IMP = window.IMP;
+        IMP.init("imp17372284");
+
+        IMP.request_pay({
+            pg: 'html5_inicis',
+            pay_method: "card",
+            merchant_uid: 'merchant_' + new Date().getTime(),
+            name: product.productName,
+            amount: product.productPrice,
+            buyer_name: users.name,
+            buyer_tel: users.phone
+        }, function (rsp) {
+            if (rsp.success) {
+                handlePaymentSuccess(product.productPrice);
+            } else {
+                alert("결제 실패: " + rsp.error_msg);
+            }
+        });
+    }
+
+    function handlePaymentSuccess(totalAmount) {
+        $.ajax({
+            type: 'POST',
+            url: '/paymentend',
+            data: {
+                orderNum: "merchant_" + new Date().getTime(),
+                productId: product.productId,
+                productName: product.productName,
+                productPrice: product.productPrice,
+                userId: users.userId,
+                address: users.address
+            }
+        }).done(function (data) {
+            alert("결제 성공");
+            window.location.href = "/paymentend";
+        });
+    }
+</script>
+</html>
