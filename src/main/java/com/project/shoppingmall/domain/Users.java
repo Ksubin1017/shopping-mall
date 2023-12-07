@@ -3,6 +3,8 @@ package com.project.shoppingmall.domain;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,6 +15,7 @@ import javax.persistence.Table;
 @Setter
 @ToString
 @Entity
+@DynamicInsert
 @Table(name="users")
 public class Users {
 
@@ -39,6 +42,7 @@ public class Users {
     private String birth;
 
     @Column(name="user_class")
+    @ColumnDefault("Role_m")
     private String userClass;
 
     protected Users() {

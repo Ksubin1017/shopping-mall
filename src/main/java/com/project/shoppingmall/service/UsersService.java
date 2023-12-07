@@ -28,4 +28,9 @@ public class UsersService {
 
         return usersRepository.countByPwd(pwd);
     }
+
+    public Users findUser(String userId) {
+
+        return usersRepository.findByUserId(userId);
+    }
 }
