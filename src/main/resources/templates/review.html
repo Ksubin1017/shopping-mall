@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <div>
+      <img th:src="@{'/images/' + ${product.productInfoName}}" class="review-img">
+  </div>
+
+  <form th:action="@{'/writeReview?productId=' + ${product.productId}}" method="post">
+      <input type="text" name="content">
+      <input type="submit" value="리뷰 작성">
+  </form>
+</body>
+</html>
