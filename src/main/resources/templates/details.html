@@ -36,6 +36,21 @@
 
           </div>
       </div>
+
+        <table>
+            <tr th:each="review : ${review}">
+                <td th:text="${review.userId}"></td>
+                <td th:text="${review.content}"></td>
+                <td th:text="${review.reviewCreatedAt}"></td>
+            </tr>
+        </table>
+        <a th:href="@{/details(page = ${previousPage},productId=${productId})}" th:text="이전"></a>
+        <th:block th:each="page : ${#numbers.sequence(startPage, endPage)}">
+            <a th:if="${page != nowPage}" th:href="@{/details(page = ${page - 1},productId=${productId})}" th:text="${page}"></a>
+            <strong th:if="${page == nowPage}" th:text="${page}"></strong>
+        </th:block>
+        <a th:href="@{/details(page = ${nextPage},productId=${productId})}" th:text="다음"></a>
+        <a th:href="@{/details(productId=${product.productId})}">리뷰 작성</a>
     </main>
 
     <div class="footer" th:replace="/footer :: footer"></div>
