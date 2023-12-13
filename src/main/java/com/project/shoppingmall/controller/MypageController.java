@@ -39,8 +39,9 @@ public class MypageController {
     }
 
     @PostMapping("/reviewDel")
-    public String reviewDel(@RequestParam("reviewNum") String reviewNum) {
+    public String reviewDel(@RequestParam("reviewNum") String rawReviewNum) {
 
+        Long reviewNum = reviewService.getLongReviewNum(rawReviewNum);
         reviewService.reviewDel(reviewNum);
         return "/reviewDel";
     }

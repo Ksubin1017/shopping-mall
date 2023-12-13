@@ -1,7 +1,6 @@
 package com.project.shoppingmall.service;
 
 import com.project.shoppingmall.domain.Review;
-import com.project.shoppingmall.dto.ReviewDTO;
 import com.project.shoppingmall.repository.ReviewRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -14,7 +13,7 @@ import java.util.List;
 @Service
 public class ReviewService {
 
-    private ReviewRepository reviewRepository;
+    private final ReviewRepository reviewRepository;
 
     @Autowired
     public ReviewService(ReviewRepository reviewRepository) {
@@ -34,7 +33,11 @@ public class ReviewService {
     }
 
     @Transactional
-    public void reviewDel(String reviewNum) {
+    public void reviewDel(Long reviewNum) {
         reviewRepository.deleteByReviewNum(reviewNum);
+    }
+
+    public Long getLongReviewNum(String reviewNum) {
+        return Long.valueOf(reviewNum);
     }
 }

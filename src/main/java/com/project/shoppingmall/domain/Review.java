@@ -40,4 +40,5 @@ public class Review {
         this.content = content;
         this.reviewCreatedAt = LocalDate.now();
     }
+
 }
