@@ -3,7 +3,6 @@ package com.project.shoppingmall.domain;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.DynamicInsert;
 
 import javax.persistence.Column;
@@ -41,8 +40,7 @@ public class Users {
     @Column(name="user_birth")
     private String birth;
 
-    @Column(name="user_class")
-    @ColumnDefault("Role_m")
+    @Column(name="user_class", columnDefinition = "varchar(255) default 'Role_m'")
     private String userClass;
 
     protected Users() {
@@ -58,9 +56,4 @@ public class Users {
         this.email = email;
         this.birth = birth;
     }
-
-    public static Users of(String userId, String pwd, String name, String address, String phone, String email, String birth) {
-        return new Users(userId, pwd, name, address, phone, email, birth);
-    }
-
 }

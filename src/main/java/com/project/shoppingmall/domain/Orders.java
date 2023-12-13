@@ -2,18 +2,18 @@ package com.project.shoppingmall.domain;
 
 import lombok.Getter;
 import lombok.ToString;
-import org.hibernate.annotations.ColumnDefault;
-import org.hibernate.annotations.DynamicInsert;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.time.LocalDateTime;
 
 @Getter
 @ToString
 @Entity
-@DynamicInsert
 @Table(name="orders")
 public class Orders {
     @Id
@@ -42,7 +42,6 @@ public class Orders {
     @CreatedDate
     private LocalDateTime orderCreatedAt;
 
-    @ColumnDefault("O")
     private String orderStatus;
 
     protected Orders() {}
@@ -56,5 +55,10 @@ public class Orders {
         this.productName = productName;
         this.productPrice = productPrice;
         this.orderCreatedAt = LocalDateTime.now();
+        this.orderStatus = "X";
+    }
+
+    public void updateOrderStatus(String orderStatus) {
+        this.orderStatus = orderStatus;
     }
 }
