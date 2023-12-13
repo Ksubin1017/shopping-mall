@@ -50,7 +50,7 @@
             <strong th:if="${page == nowPage}" th:text="${page}"></strong>
         </th:block>
         <a th:href="@{/details(page = ${nextPage},productId=${productId})}" th:text="다음"></a>
-        <a th:href="@{/details(productId=${product.productId})}">리뷰 작성</a>
+        <a th:href="@{/review(productId=${product.productId})}">리뷰 작성</a>
     </main>
 
     <div class="footer" th:replace="/footer :: footer"></div>
