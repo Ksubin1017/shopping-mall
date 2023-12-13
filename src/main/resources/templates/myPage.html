@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AWESOME</title>
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/footer.css">
+</head>
+<body>
+<div th:replace="/header :: header"></div>
+    <main>
+        <div class="ordered">
+            주문 내역
+            <table>
+                <tr th:each="orders:${orders}">
+                    <td th:text="${orders.productName}"></td>
+                    <td th:text="${orders.productPrice}"></td>
+                    <td th:text="${orders.orderCreatedAt}"></td>
+                </tr>
+            </table>
+        </div>
+        <p></p>
+        <div class="reviewed">
+            리뷰 내역
+                <table>
+                    <tr th:each="review:${review}">
+                        <td th:text="${review.content}"></td>
+                        <td th:text="${review.reviewCreatedAt}"></td>
+                        <td>
+                            <form th:action="@{/reviewDel}" method="post">
+                                <input type="hidden" name="reviewNum" th:value="${review.reviewNum}">
+                                <input type="submit" value="삭제">
+                            </form>
+                        </td>
+                    </tr>
+                </table>
+
+        </div>
+    </main>
+<div class="footer" th:replace="/footer :: footer"></div>
+</body>
+</html>
