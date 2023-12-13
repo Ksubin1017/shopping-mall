@@ -16,7 +16,7 @@ public class Review {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String reviewNum;
+    private Long reviewNum;
 
     @Column(nullable = false)
     private String userId;
@@ -40,4 +40,5 @@ public class Review {
         this.content = content;
         this.reviewCreatedAt = LocalDate.now();
     }
+
 }

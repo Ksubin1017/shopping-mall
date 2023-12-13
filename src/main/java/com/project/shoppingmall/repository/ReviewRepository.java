@@ -12,4 +12,7 @@ import java.util.List;
 public interface ReviewRepository extends JpaRepository<Review, String> {
 
     Page<Review> findByProductId(Long productId, Pageable pageable);
+    List<Review> findByUserIdOrderByReviewCreatedAtDesc(String userId);
+
+    void deleteByReviewNum(Long reviewNum);
 }

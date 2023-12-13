@@ -25,7 +25,7 @@
         <div class="top-icon" th:if="${session.userId != null && session.userId != 'anonymousUser'}">
             <strong th:text="${session.userId}"> </strong>
             &nbsp;&nbsp;
-            <strong><a href="#">MYPAGE</a></strong>
+            <strong><a href="/myPage">MYPAGE</a></strong>
 
             <strong><a href="/logout">LOGOUT</a></strong>
         </div>
@@ -41,8 +41,6 @@
           <li><strong><a href="/pants">PANTS</a></strong></li>
           <li><strong><a href="/shoes">SHOES</a></strong></li>
           <li><strong><a href="/acc">ACC</a></strong></li>
-          <li><strong>|</strong></li>
-          <li><strong><a href="#">고객센터</a></strong></li>
         </ul>
       </nav>
     </div>

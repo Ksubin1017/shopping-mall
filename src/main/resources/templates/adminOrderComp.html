@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AWESOME-admin</title>
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/footer.css">
+</head>
+<body>
+<div th:replace="/header :: header"></div>
+    <main>
+        <a href="/adminOrderNotComp">미처리</a>
+        <a href="/adminOrderComp">주문 처리 완료</a>
+        <div>
+            주문 현황
+        </div>
+
+        <div>
+            처리 완료
+        </div>
+        <table>
+            <tr>
+                <td>주문번호</td>
+                <td>주문자 ID</td>
+                <td>주문자</td>
+                <td>주문 상품</td>
+                <td>주문 가격</td>
+                <td>주소</td>
+                <td>주문 현황</td>
+            </tr>
+            <tr th:each="orderComp:${orderComp}">
+                <td th:text="${orderComp.orderNum}"></td>
+                <td th:text="${orderComp.userId}"></td>
+                <td th:text="${orderComp.userName}"></td>
+                <td th:text="${orderComp.productName}"></td>
+                <td th:text="${orderComp.productPrice}"></td>
+                <td th:text="${orderComp.address}"></td>
+                <td th:text="${orderComp.orderStatus}"></td>
+            </tr>
+        </table>
+        <a th:href="@{/adminOrderComp(page = ${previousPage})}" th:text="이전"></a>
+        <th:block th:each="page : ${#numbers.sequence(startPage, endPage)}">
+            <a th:if="${page != nowPage}" th:href="@{/adminOrderComp(page = ${page - 1},productId=${productId})}" th:text="${page}"></a>
+            <strong th:if="${page == nowPage}" th:text="${page}"></strong>
+        </th:block>
+        <a th:href="@{/adminOrderComp(page = ${nextPage})}" th:text="다음"></a>
+    </main>
+<div class="footer" th:replace="/footer :: footer"></div>
+</body>
+</html>
