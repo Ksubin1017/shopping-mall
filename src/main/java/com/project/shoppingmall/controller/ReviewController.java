@@ -56,7 +56,7 @@ public class ReviewController {
             Review review = new Review(userId, productId, content);
             reviewService.saveReview(review);
 
-            return "redirect:/";
+            return "/reviewComp";
         }
 
         return "/reviewError";
