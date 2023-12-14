@@ -16,88 +16,18 @@
     </h3>
 
     <div class="mainbest">
-
-        <div class="mainbest-li">
+        <div class="mainbest-li" th:each="bestProduct : ${bestProduct}">
             <div>
-                <img src="/images/jeans.jpg" class="main-best-img">
+                <a th:href="@{/details(productId=${bestProduct.productId})}">
+                    <img th:src="@{'/images/' + ${bestProduct.productMainName}}" class="main-best-img">
+                </a>
             </div>
-            <div class="mainbest-product-name">상품명</div>
-            <div>사이즈</div>
-            <div>가격</div>
-            <div>리뷰</div>
+            <div class="mainbest-product-name" th:text="'상품명  ' + ${bestProduct.productName}">상품명</div>
+            <div th:text="가격 + ${bestProduct.productPrice}">가격</div>
+            <div th:text="구매건수 + ${bestProduct.orderCount}"></div>
         </div>
-
-        <div class="mainbest-li">
-            <div>
-                <img src="/images/jeans.jpg" class="main-best-img">
-            </div>
-            <div class="mainbest-product-name">상품명</div>
-            <div>사이즈</div>
-            <div>가격</div>
-            <div>리뷰</div>
-        </div>
-
-        <div class="mainbest-li">
-            <div>
-                <img src="/images/jeans.jpg" class="main-best-img">
-            </div>
-            <div class="mainbest-product-name">상품명</div>
-            <div>사이즈</div>
-            <div>가격</div>
-            <div>리뷰</div>
-        </div>
-
-        <div class="mainbest-li">
-            <div>
-                <img src="/images/jeans.jpg" class="main-best-img">
-            </div>
-            <div class="mainbest-product-name">상품명</div>
-            <div>사이즈</div>
-            <div>가격</div>
-            <div>리뷰</div>
-        </div>
-
-        <div class="mainbest-li">
-            <div>
-                <img src="/images/jeans.jpg" class="main-best-img">
-            </div>
-            <div class="mainbest-product-name">상품명</div>
-            <div>사이즈</div>
-            <div>가격</div>
-            <div>리뷰</div>
-        </div>
-
-        <div class="mainbest-li">
-            <div>
-                <img src="/images/jeans.jpg" class="main-best-img">
-            </div>
-            <div class="mainbest-product-name">상품명</div>
-            <div>사이즈</div>
-            <div>가격</div>
-            <div>리뷰</div>
-        </div>
-
-        <div class="mainbest-li">
-            <div>
-                <img src="/images/jeans.jpg" class="main-best-img">
-            </div>
-            <div class="mainbest-product-name">상품명</div>
-            <div>사이즈</div>
-            <div>가격</div>
-            <div>리뷰</div>
-        </div>
-
-        <div class="mainbest-li">
-            <div>
-                <img src="/images/jeans.jpg" class="main-best-img">
-            </div>
-            <div class="mainbest-product-name">상품명</div>
-            <div>사이즈</div>
-            <div>가격</div>
-            <div>리뷰</div>
-        </div>
-
     </div>
+
     <p>&nbsp</p>
     <p>&nbsp</p>
     <h3>
@@ -105,88 +35,18 @@
     </h3>
 
     <div class="mainnew">
-
-        <div class="mainnew-li">
+        <div class="mainnew-li" th:each="newProduct : ${newProduct}">
             <div>
-                <img src="/images/jeans.jpg" class="main-new-img">
+                <a th:href="@{/details(productId=${newProduct.productId})}">
+                    <img th:src="@{'/images/' + ${newProduct.productMainName}}" class="main-new-img">
+                </a>
             </div>
-            <div class="mainnew-product-name">상품명</div>
-            <div>사이즈</div>
-            <div>가격</div>
-            <div>리뷰</div>
+            <div class="mainnew-product-name" th:text="'상품명  ' + ${newProduct.productName}">상품명</div>
+            <div th:text="가격 + ${newProduct.productPrice}">가격</div>
+            <div th:text="구매건수 + ${newProduct.orderCount}"></div>
         </div>
-
-        <div class="mainnew-li">
-            <div>
-                <img src="/images/jeans.jpg" class="main-new-img">
-            </div>
-            <div class="mainnew-product-name">상품명</div>
-            <div>사이즈</div>
-            <div>가격</div>
-            <div>리뷰</div>
-        </div>
-
-        <div class="mainnew-li">
-            <div>
-                <img src="/images/jeans.jpg" class="main-new-img">
-            </div>
-            <div class="mainnew-product-name">상품명</div>
-            <div>사이즈</div>
-            <div>가격</div>
-            <div>리뷰</div>
-        </div>
-
-        <div class="mainnew-li">
-            <div>
-                <img src="/images/jeans.jpg" class="main-new-img">
-            </div>
-            <div class="mainnew-product-name">상품명</div>
-            <div>사이즈</div>
-            <div>가격</div>
-            <div>리뷰</div>
-        </div>
-
-        <div class="mainnew-li">
-            <div>
-                <img src="/images/jeans.jpg" class="main-new-img">
-            </div>
-            <div class="mainnew-product-name">상품명</div>
-            <div>사이즈</div>
-            <div>가격</div>
-            <div>리뷰</div>
-        </div>
-
-        <div class="mainnew-li">
-            <div>
-                <img src="/images/jeans.jpg" class="main-new-img">
-            </div>
-            <div class="mainnew-product-name">상품명</div>
-            <div>사이즈</div>
-            <div>가격</div>
-            <div>리뷰</div>
-        </div>
-
-        <div class="mainnew-li">
-            <div>
-                <img src="/images/jeans.jpg" class="main-new-img">
-            </div>
-            <div class="mainnew-product-name">상품명</div>
-            <div>사이즈</div>
-            <div>가격</div>
-            <div>리뷰</div>
-        </div>
-
-        <div class="mainnew-li">
-            <div>
-                <img src="/images/jeans.jpg" class="main-new-img">
-            </div>
-            <div class="mainnew-product-name">상품명</div>
-            <div>사이즈</div>
-            <div>가격</div>
-            <div>리뷰</div>
-        </div>
-
     </div>
+
 </main>
 
 <div class="footer" th:replace="/footer :: footer"></div>

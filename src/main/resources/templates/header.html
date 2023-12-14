@@ -12,8 +12,10 @@
       </div>
 
       <div class="top-search">
-        <input type="text">
-          <img src="/images/search.png">
+        <form action="/search" method="get">
+            <input type="text" name="keyword">
+        </form>
+            <img src="/images/search.png">
       </div>
 
         <div class="top-icon" th:if="${session.userId == null || session.userId == 'anonymousUser'}">
@@ -34,8 +36,6 @@
   <div class="header-sec02">
     <nav>
       <ul class="top-nav">
-          <li><strong><a href="/best">BEST</a></strong></li>
-          <li><strong><a href="/newPage">NEW</a></strong></li>
           <li><strong><a href="/outer">OUTER</a></strong></li>
           <li><strong><a href="/top">TOP</a></strong></li>
           <li><strong><a href="/pants">PANTS</a></strong></li>

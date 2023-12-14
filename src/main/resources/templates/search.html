@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <link rel="stylesheet" href="/css/header.css">
+  <link rel="stylesheet" href="/css/footer.css">
+  <link rel="stylesheet" href="/css/search.css">
+</head>
+<body>
+<div th:replace="/header :: header"></div>
+  <main>
+    <div class="pageinfo" th:text="${keyword} + 검색결과">
+
+    </div>
+
+    <div class="search-result">
+      <div class="search-li" th:each="product : ${productList}">
+        <div>
+          <a th:href="@{/details(productId=${product.productId})}">
+            <img th:src="@{'/images/' + ${product.productMainName}}" class="search-img">
+          </a>
+        </div>
+        <div class="search-product-name" th:text="'상품명  ' + ${product.productName}">상품명</div>
+        <div th:text="가격 + ${product.productPrice}">가격</div>
+        <div>리뷰</div>
+      </div>
+    </div>
+  </main>
+<div class="footer" th:replace="/footer :: footer"></div>
+</body>
+</html>
