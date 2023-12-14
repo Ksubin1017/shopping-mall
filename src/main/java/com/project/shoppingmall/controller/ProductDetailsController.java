@@ -14,8 +14,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.List;
-
 @Controller
 public class ProductDetailsController {
 
@@ -32,6 +30,7 @@ public class ProductDetailsController {
     public String productDetails(@RequestParam("productId") Long productId, Model model, @PageableDefault(page = 0, size=5, sort = "reviewCreatedAt", direction = Sort.Direction.DESC) Pageable pageable) {
         Product product = productService.productDetails(productId);
         Page<Review> review = reviewService.findReview(productId, pageable);
+
 
         int nowPage = review.getPageable().getPageNumber() + 1;  // 사용자에게 보여주기 위한 숫자
         int startPage = Math.max(nowPage - 2, 1);   // 페이징의 첫번째 목록
