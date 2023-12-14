@@ -1,6 +1,7 @@
 package com.project.shoppingmall.service;
 
 import com.project.shoppingmall.domain.Product;
+import com.project.shoppingmall.dto.OrderCountDTO;
 import com.project.shoppingmall.dto.ProductDTO;
 import com.project.shoppingmall.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
@@ -88,5 +90,22 @@ public class ProductService {
         return productRepository.findByProductId(productId);
     }
 
+    public List<Product> searchByname(String keyword) {
 
+        return productRepository.findByProductNameContaining(keyword);
+    }
+
+    @Transactional
+    public void updateProductOrdered(Long productId, OrderCountDTO ordercountDTO) {
+        Product product = productRepository.findByProductId(productId);
+        product.updateProductOrdered(ordercountDTO.getOrderCount());
+    }
+
+    public List<Product> bestProduct() {
+        return productRepository.findTop8ByOrderByOrderCountDesc();
+    }
+
+    public List<Product> newProduct() {
+        return productRepository.findTop8ByOrderByProductCreadtedAtDesc();
+    }
 }

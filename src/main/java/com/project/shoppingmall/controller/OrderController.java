@@ -3,6 +3,7 @@ package com.project.shoppingmall.controller;
 import com.project.shoppingmall.domain.Orders;
 import com.project.shoppingmall.domain.Product;
 import com.project.shoppingmall.domain.Users;
+import com.project.shoppingmall.dto.OrderCountDTO;
 import com.project.shoppingmall.service.OrderService;
 import com.project.shoppingmall.service.ProductService;
 import com.project.shoppingmall.service.UsersService;
@@ -57,8 +58,11 @@ public class OrderController {
         Users users = usersService.findUser(userId);
         Product product = productService.productDetails(productId);
         Orders orders = new Orders(orderNum, users.getUserId(), users.getName(), users.getAddress(), product.getProductId(), product.getProductName(), product.getProductPrice());
-
+        OrderCountDTO orderCountDTO = new OrderCountDTO();
+        orderCountDTO.setOrderCount(product.getOrderCount() + 1);
+        productService.updateProductOrdered(productId, orderCountDTO);
         orderService.saveOrder(orders);
+
 
         return "/paymentend";
     }

@@ -51,7 +51,7 @@ public class ProductController {
         int startPage = Math.max(nowPage - 2, 1);   // 페이징의 첫번째 목록
         int endPage = Math.min(startPage + 4, outerList.getTotalPages());
         int previousPage = Math.max(nowPage - 2, 0);        //  -1 은 페이징 상의 현재, -2 페이징 상의 전 페이지
-        int nextPage = Math.min(nowPage, outerList.getTotalPages() - 1);   // 페이지 사
+        int nextPage = Math.min(nowPage, outerList.getTotalPages() - 1);
         int firstPage = 0;
 
         model.addAttribute("outer", outerList);

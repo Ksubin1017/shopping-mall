@@ -40,4 +40,5 @@ public class ReviewService {
     public Long getLongReviewNum(String reviewNum) {
         return Long.valueOf(reviewNum);
     }
+
 }

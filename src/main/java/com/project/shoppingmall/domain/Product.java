@@ -34,6 +34,8 @@ public class Product {
 
     private String productInfoName;
 
+    private int orderCount;
+
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     @CreatedDate
     @Column(updatable = false)
@@ -49,5 +51,10 @@ public class Product {
         this.productMainName = productMainName;
         this.productInfoName = productInfoName;
         this.productCreadtedAt = LocalDateTime.now();
+        this.orderCount = 0;
+    }
+
+    public void updateProductOrdered(int orderCount) {
+        this.orderCount = orderCount;
     }
 }
