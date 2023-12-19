@@ -1,0 +1,32 @@
+.productEnroll-container {
+    text-align: center;
+}
+
+.pageinfo {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-size: 60px;
+    font-family: Cambria;
+    color: black;
+}
+
+input {
+    margin-bottom: 30px;
+}
+
+select {
+    margin-bottom: 30px;
+}
+
+.category {
+    margin-right: 70px;
+}
+
+.description {
+    margin-left: 5px;
+}
+
+.product-photo {
+    margin-left: 115px;
+}

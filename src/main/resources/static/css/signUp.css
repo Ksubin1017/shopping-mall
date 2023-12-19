@@ -1,0 +1,106 @@
+.pageInfo {
+    text-align: center;
+    margin-top: 100px;
+    margin-bottom: 50px;
+    font-size: 60px;
+    font-family: Cambria;
+    color: black;
+}
+
+.signUp-container {
+    margin: 0 auto;
+    margin-bottom: 50px;
+    width: 1600px;
+    text-align: center;
+}
+
+.inputId {
+    margin-bottom: 5px;
+    width: 300px;
+    height: 30px;
+    border: none;
+    border-bottom: solid 2px black;
+}
+
+.inputPwd {
+    margin-bottom: 5px;
+    margin-top: 5px;
+    width: 300px;
+    height: 30px;
+    border: none;
+    border-bottom: solid 2px black;
+}
+
+.inputName {
+    margin-bottom: 20px;
+    margin-top: 5px;
+    width: 300px;
+    height: 30px;
+    border: none;
+    border-bottom: solid 2px black;
+}
+
+#zonecode {
+    margin-bottom: 20px;
+    margin-left: 110px;
+    width: 100px;
+    height: 30px;
+    border: none;
+    border-bottom: solid 2px black;
+}
+
+#inputAddr1 {
+    margin-bottom: 20px;
+    width: 300px;
+    height: 30px;
+    border: none;
+    border-bottom: solid 2px black;
+}
+
+#inputAddr2 {
+    margin-bottom: 20px;
+    width: 300px;
+    height: 30px;
+    border: none;
+    border-bottom: solid 2px black;
+}
+
+.inputPhone {
+    margin-bottom: 5px;
+    width: 300px;
+    height: 30px;
+    border: none;
+    border-bottom: solid 2px black;
+}
+
+.inputEmail {
+    margin-bottom: 5px;
+    margin-top: 5px;
+    width: 300px;
+    height: 30px;
+    border: none;
+    border-bottom: solid 2px black;
+}
+
+.inputBirth {
+    margin-bottom: 5px;
+    margin-top: 5px;
+    width: 300px;
+    height: 30px;
+    border: none;
+    border-bottom: solid 2px black;
+}
+
+.signUpSubmit {
+    width: 300px;
+    height: 30px;
+    margin-top: 30px;
+    background-color: #EAEAEA;
+}
+
+span {
+    color: #ABABAB;
+    font-size: 12px;
+    height: 20px;
+    font-weight: bold;
+}

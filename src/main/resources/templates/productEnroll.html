@@ -2,14 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>AWESOME</title>
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/productEnroll.css">
 </head>
 <body>
+<div th:replace="/header :: header"></div>
+<div class="pageinfo">
+    상품 등록
+</div>
+<div class="productEnroll-container">
     <form method="post" action="/productEnroll", enctype="multipart/form-data">
-        상품 이름<br>
+        상품 이름
         <input type="text" name="productName"><br>
-        상품 가격<br>
+        상품 가격
         <input type="text" name="productPrice"><br>
+
+        <div class="category">
         상품 카테고리
         <select name="productCategory">
             <option value="outer">OUTER</option>
@@ -18,14 +28,24 @@
             <option value="shoes">SHOES</option>
             <option value="acc">ACC</option>
         </select>
-        <br>
-        상품 설명<br>
-        <input type="text" name="productDescription"><br>
-        상품 메인사진<br>
+        </div>
+
+        <div class="description">
+        상품 설명
+        <input type="text" name="productDescription">
+        </div>
+
+        <div class="product-photo">
+        상품 메인사진
         <input type="file" name="productMainFile"><br>
-        상품 정보사진<br>
+        상품 정보사진
         <input type="file" name="productInfoFile"><br>
+        </div>
+
         <input type="submit" value="등록하기">
+
     </form>
+</div>
+<div class="footer" th:replace="/footer :: footer"></div>
 </body>
 </html>

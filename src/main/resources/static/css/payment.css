@@ -1,0 +1,54 @@
+.payment-page {
+    margin-left: 600px;
+}
+
+.pageinfo {
+    text-align: center;
+    margin-top: 100px;
+    margin-bottom: 50px;
+    font-size: 60px;
+    font-family: Cambria;
+    color: black;
+}
+
+.product-container {
+    display: flex;
+}
+
+.payment-img {
+    width: 300px;
+    height: 350px;
+    margin-right: 30px;
+}
+
+.payment-table {
+    border-collapse: collapse;
+    width: 400px;
+    height: 150px;
+}
+
+.payment-table td {
+    padding: 10px;
+    text-align: left;
+    font-family: Arial, sans-serif;
+    border: none;
+}
+
+.payment-table td:first-child {
+    font-weight: bold;
+}
+
+.payment-table .payment-button {
+    background-color: black;
+    text-align: center;
+}
+
+.payment-table button {
+    width: 110px;
+    padding: 8px;
+    border: none;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}

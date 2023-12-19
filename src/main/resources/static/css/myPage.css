@@ -1,0 +1,37 @@
+/* CSS 파일이나 <style> 태그 내부에서 */
+.myPage-container {
+
+    text-align: center;
+}
+
+table {
+    border-collapse: collapse; /* 테이블 셀 경계를 합침 */
+    width: 800px; /* 테이블 전체 너비 */
+    text-align: center;
+    margin-left: 570px;
+    margin-top: 20px;
+}
+
+table td, table th {
+    border: 1px solid black; /* 테두리를 검은색으로 변경 */
+    border-left: none; /* 왼쪽 경계선 제거 */
+    border-right: none; /* 오른쪽 경계선 제거 */
+    padding: 8px; /* 셀 안 여백 */
+}
+
+table th {
+    background-color: #f2f2f2; /* 헤더 배경색 */
+}
+
+tr:first-child td {
+    font-weight: bold;
+}
+
+.ordered {
+    margin-top: 30px;
+    margin-bottom: 80px;
+}
+
+.reviewed {
+
+}

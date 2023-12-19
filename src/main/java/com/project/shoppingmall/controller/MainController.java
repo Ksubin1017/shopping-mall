@@ -2,6 +2,7 @@ package com.project.shoppingmall.controller;
 
 import com.project.shoppingmall.domain.Product;
 import com.project.shoppingmall.service.ProductService;
+import com.project.shoppingmall.service.UsersService;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -15,9 +16,11 @@ import java.util.List;
 public class MainController {
 
     private final ProductService productService;
+    private final UsersService usersService;
 
-    public MainController(ProductService productService) {
+    public MainController(ProductService productService, UsersService usersService) {
         this.productService = productService;
+        this.usersService = usersService;
     }
 
     @GetMapping("/")

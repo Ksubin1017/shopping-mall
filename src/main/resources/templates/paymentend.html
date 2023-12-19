@@ -5,10 +5,48 @@
     <title>AWESOME</title>
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/paymentend.css">
 </head>
 <body>
-<div th:replace="/header :: header"></div>
-  결제완료
-<div class="footer" th:replace="/footer :: footer"></div>
+    <div th:replace="/header :: header"></div>
+    <div class="paymentEnd-container">
+    <div class="pageInfo">
+        결제완료
+    </div>
+    <div class="payment-content">
+        <img th:src="@{'/images/' + ${product.productMainName}}" class="payment-img">
+        <div>
+            <table class="payment-table">
+                <tr>
+                    <td>이름</td>
+                    <td th:text="${users.getName()}"></td>
+                </tr>
+                <tr>
+                    <td>배송지</td>
+                    <td th:text="${users.getPostcode()}"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td th:text="${users.getAddress1()}"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td th:text="${users.getAddress2()}"></td>
+                </tr>
+                <tr>
+                    <td>결제금액</td>
+                    <td th:text="${product.getProductPrice()} + '원'"></td>
+                </tr>
+            </table>
+            <div class="payment-location">
+                <strong><a href="/">메인으로</a></strong>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <strong><a href="/myPage">마이 페이지</a></strong>
+
+            </div>
+        </div>
+    </div>
+        <div class="footer" th:replace="/footer :: footer"></div>
+    </div>
 </body>
 </html>

@@ -4,10 +4,7 @@ import com.project.shoppingmall.domain.Users;
 import com.project.shoppingmall.dto.UserDTO;
 import com.project.shoppingmall.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.Printer;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
@@ -16,12 +13,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.print.attribute.standard.PrinterMessageFromOperator;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-import java.util.Locale;
 
 @Controller
 public class LoginController {
@@ -49,11 +44,14 @@ public class LoginController {
     }
 
     @PostMapping("/signUpComp")
-    public String signUpComp(@Valid UserDTO userDTO, @RequestParam String pwd) {
+    public String signUpComp(@Valid UserDTO userDTO, BindingResult bindingResult,  @RequestParam String pwd) {
+        if (bindingResult.hasErrors()) {
 
+            return "/signupError";
+        }
         String encPwd = bCryptPasswordEncoder.encode(pwd);
         userDTO.setPwd(encPwd);
-        Users users = new Users(userDTO.getUserId(), encPwd, userDTO.getName(), userDTO.getAddress(), userDTO.getPhone(), userDTO.getEmail(), userDTO.getBirth());
+        Users users = new Users(userDTO.getUserId(), encPwd, userDTO.getName(), userDTO.getPostcode(), userDTO.getAddress1(), userDTO.getAddress2(), userDTO.getPhone(), userDTO.getEmail(), userDTO.getBirth());
         usersService.saveUser(users);
 
         return "/loginForm";

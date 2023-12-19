@@ -6,31 +6,31 @@
 
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/login.css">
 </head>
 <body>
     <div th:replace="/header :: header"></div>
 
+    <div class="pageInfo">
+        AWESOME
+    </div>
+
     <form name="login" action="/loginComp" method="post">
 
       <div class="login">
-        ID
-        <input class="loginId" name="userId" type="text">
+
+        <input class="loginId" name="userId" type="text" placeholder="아이디">
       </div>
 
       <div class="pwd">
-        PASSWORD
-        <input class="loginPwd" name="pwd" type="password">
+
+        <input class="loginPwd" name="pwd" type="password" placeholder="비밀번호">
       </div>
 
-      <input type="submit" value="LOGIN">
-
+      <div class="loginSubmit">
+        <input class="loginSubmitBtn" type="submit" value="로그인">
+      </div>
     </form>
-
-
-
-
-
-
 
     <div class="footer" th:replace="/footer :: footer"></div>
 </body>

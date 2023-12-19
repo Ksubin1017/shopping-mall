@@ -24,7 +24,13 @@ public class UserDTO {
     public String name;
 
     @NotBlank
-    public String address;
+    public String postcode;
+
+    @NotBlank
+    public String address1;
+
+    @NotBlank
+    public String address2;
 
     @NotBlank
     @Pattern(regexp="[0-9]+$", message="숫자만 입력 가능합니다.")
@@ -34,6 +40,7 @@ public class UserDTO {
     @Pattern(regexp = "^[A-Za-z0-9_\\.\\-]+@[A-Za-z0-9\\-]+\\.[A-Za-z0-9\\-]+$", message = "이메일 형식이 올바르지 않습니다.")
     public String email;
 
+    @Pattern(regexp = "^[0-9]{6}$", message = "6자리 숫자만 입력하세요.")
     public String birth;
 
 }

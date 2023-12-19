@@ -10,7 +10,7 @@
 <body>
 <div th:replace="/header :: header"></div>
   <main>
-    <div class="pageinfo" th:text="${keyword} + 검색결과">
+    <div class="pageinfo" th:text="'&quot;' + ${keyword} + '&quot; 검색결과'">
 
     </div>
 

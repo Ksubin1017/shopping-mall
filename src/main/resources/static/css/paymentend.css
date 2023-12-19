@@ -1,0 +1,44 @@
+.paymentEnd-container {
+    text-align: center;
+}
+
+.pageInfo {
+    text-align: center;
+    margin-top: 100px;
+    margin-bottom: 50px;
+    font-size: 60px;
+    font-family: Cambria;
+    color: black;
+}
+
+.payment-content {
+    display: flex;
+    margin-left: 600px;
+}
+
+.payment-img {
+    width: 300px;
+    height: 350px;
+    margin-right: 30px;
+}
+
+.payment-table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.payment-table td:first-child {
+    font-weight: bold;
+}
+
+.payment-table td {
+    padding: 8px;
+    text-align: left;
+    font-family: Arial, sans-serif;
+    border: none; /* 모든 경계선 없애기 */
+}
+
+.payment-location {
+    margin-top: 50px;
+    font-family: Cambria;
+}
