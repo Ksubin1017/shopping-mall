@@ -5,6 +5,7 @@
     <title>AWESOME</title>
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/details.css">
 </head>
 <body>
     <div th:replace="/header :: header"></div>
@@ -15,20 +16,50 @@
             <img th:src="@{'/images/' + ${product.productInfoName}}" class="detail-img">
         </div>
 
-        <div>
-            <div th:text="${product.productName}"></div>
-            <hr>
-            <div th:text="'판매가' + ${product.productPrice} + '원'"></div>
-            <a th:href="@{/payment(productId=${product.productId})}">BUY IT NOW</a>
-        </div>
+        <div class="productName-container">
+            <div class="detail-productName" th:text="${product.productName}"></div>
+            <hr class="detail-mainInfo-border">
+            <div class="price" th:text="'판매가    ' + ${product.productPrice} + '원'"></div>
+            <div class="productDescriptionInfo"th:text="${product.productDescription}"></div>
+
+
+            <div class="review-container">
+            <table class="review-table">
+                <tr th:each="review : ${review}">
+                    <td th:text="${review.userId}"></td>
+                    <td th:text="${review.content}"></td>
+                    <td th:text="${review.reviewCreatedAt}"></td>
+                </tr>
+            </table>
+                <br>
+                <br>
+            <a th:href="@{/details(page = ${previousPage},productId=${productId})}" th:text="이전"></a>
+            <th:block th:each="page : ${#numbers.sequence(startPage, endPage)}">
+                <a th:if="${page != nowPage}" th:href="@{/details(page = ${page - 1},productId=${productId})}" th:text="${page}"></a>
+                <strong th:if="${page == nowPage}" th:text="${page}"></strong>
+            </th:block>
+            <a th:href="@{/details(page = ${nextPage},productId=${productId})}" th:text="다음"></a>
+                <strong>
+                <a class="write-review" th:href="@{/review(productId=${product.productId})}">리뷰 작성</a>
+                </strong>
+            </div>
+            <div class="buy-button">
+                <a class="buy-button-a" th:href="@{/payment(productId=${product.productId})}">BUY IT NOW</a>
+            </div>
+            </div>
+
       </div>
+
+      <hr class="detail-border">
 
       <div class="product-detailsInfo">
           <div class="product-description">
               <div>
-                  <div th:text="${product.productName}"></div>
+                  <strong>
+                    <div class="description-name" th:text="${product.productName}"></div>
+                  </strong>
                   <div class="productDescriptionImg">
-                      <img th:src="@{'/images/' + ${product.productInfoName}}" class="detail-img">
+                      <img th:src="@{'/images/' + ${product.productInfoName}}" class="detail-info-img">
                   </div>
 
               </div>
@@ -37,20 +68,7 @@
           </div>
       </div>
 
-        <table>
-            <tr th:each="review : ${review}">
-                <td th:text="${review.userId}"></td>
-                <td th:text="${review.content}"></td>
-                <td th:text="${review.reviewCreatedAt}"></td>
-            </tr>
-        </table>
-        <a th:href="@{/details(page = ${previousPage},productId=${productId})}" th:text="이전"></a>
-        <th:block th:each="page : ${#numbers.sequence(startPage, endPage)}">
-            <a th:if="${page != nowPage}" th:href="@{/details(page = ${page - 1},productId=${productId})}" th:text="${page}"></a>
-            <strong th:if="${page == nowPage}" th:text="${page}"></strong>
-        </th:block>
-        <a th:href="@{/details(page = ${nextPage},productId=${productId})}" th:text="다음"></a>
-        <a th:href="@{/review(productId=${product.productId})}">리뷰 작성</a>
+
     </main>
 
     <div class="footer" th:replace="/footer :: footer"></div>

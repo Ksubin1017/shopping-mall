@@ -1,0 +1,73 @@
+.pageInfo {
+    text-align: center;
+    margin-top: 100px;
+    margin-bottom: 50px;
+    font-size: 50px;
+    font-family: Cambria;
+    color: black;
+}
+
+.order-status {
+    text-align: center;
+}
+
+.admin-content {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.order-table {
+    width: 1600px;
+    margin-left: 150px;
+    border-collapse: collapse;
+}
+
+.order-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.order-table .header {
+    font-weight: bold;
+    background-color: #f2f2f2;
+}
+
+tr:first-child td {
+    font-weight: bold;
+}
+
+.pagination {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.page-link {
+    padding: 5px 10px;
+    margin: 0 3px;
+    border: 1px solid #ddd;
+    text-decoration: none;
+    color: #333;
+    border-radius: 3px;
+    transition: background-color 0.3s ease;
+}
+
+.page-link:hover {
+    background-color: #f2f2f2;
+}
+
+.page-link:visited {
+    color: #333;
+}
+
+.page-link strong {
+    padding: 5px 10px;
+    margin: 0 3px;
+    font-weight: bold;
+    background-color: #007bff;
+    color: white;
+    border-radius: 3px;
+}
+

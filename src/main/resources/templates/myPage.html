@@ -5,24 +5,36 @@
     <title>AWESOME</title>
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/myPage.css">
 </head>
 <body>
 <div th:replace="/header :: header"></div>
     <main>
+        <div class="myPage-container">
         <div class="ordered">
-            주문 내역
+            <h2>주문 내역</h2>
             <table>
+                <tr>
+                    <td>상품명</td>
+                    <td>가격</td>
+                    <td>주문 날짜</td>
+                </tr>
                 <tr th:each="orders:${orders}">
                     <td th:text="${orders.productName}"></td>
-                    <td th:text="${orders.productPrice}"></td>
+                    <td th:text="${orders.productPrice} + 원"></td>
                     <td th:text="${orders.orderCreatedAt}"></td>
                 </tr>
             </table>
         </div>
         <p></p>
         <div class="reviewed">
-            리뷰 내역
+            <h2>리뷰 내역</h2>
                 <table>
+                    <tr>
+                        <td>작성 내용</td>
+                        <td>작성 일자</td>
+                        <td>삭제</td>
+                    </tr>
                     <tr th:each="review:${review}">
                         <td th:text="${review.content}"></td>
                         <td th:text="${review.reviewCreatedAt}"></td>
@@ -35,6 +47,7 @@
                     </tr>
                 </table>
 
+        </div>
         </div>
     </main>
 <div class="footer" th:replace="/footer :: footer"></div>

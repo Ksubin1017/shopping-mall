@@ -5,25 +5,53 @@
     <title>Awesome</title>
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/payment.css">
 </head>
 <body>
 <div th:replace="/header :: header"></div>
-
+<div class="pageinfo">
+    결제하기
+</div>
     <main class="payment-page">
-        <div class="pageinfo">
 
-        </div>
 
-        <div class="product-contianer">
+        <div class="product-container">
             <div>
                 <img th:src="@{'/images/' + ${product.productMainName}}" class="payment-img">
             </div>
 
-            <div class="payment-productName" th:text="${product.getProductName()}"></div>
-            <div class="payment-productPrice" th:text="${product.getProductPrice()}"></div>
-            <div class="user-address" th:text="${users.getAddress()}"></div>
-            <button onclick="requestPay()">결제하기</button>
+            <table class="payment-table">
+                <tr>
+                    <td>상품명</td>
+                    <td th:text="${product.getProductName()}"></td>
+                </tr>
+                <tr>
+                    <td>결제 금액</td>
+                    <td th:text="${product.getProductPrice()}"></td>
+                </tr>
+                <tr>
+                    <td>배송지</td>
+                    <td th:text="${users.getPostcode()}"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td th:text="${users.getAddress1()}"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td th:text="${users.getAddress2()}"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><button onclick="requestPay()">결제하기</button></td>
+                </tr>
+            </table>
+
         </div>
+
     </main>
 
 <div class="footer" th:replace="/footer :: footer"></div>
@@ -71,7 +99,7 @@
             }
         }).done(function (data) {
             alert("결제 성공");
-            window.location.href = "/paymentend";
+            window.location.href = '/paymentend';
         });
     }
 </script>

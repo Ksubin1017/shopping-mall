@@ -6,53 +6,72 @@
 
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/signUp.css">
 </head>
 <body>
 <div th:replace="/header :: header"></div>
-
-    <div class="singUpInfo">
+    <div class="signUp-container">
+    <div class="pageInfo">
         AWESOME
     </div>
 
     <form name="singUpForm" action="/signUpComp" method = "post">
-        <div class="inputId">
-            ID
-            <input type="text" name="userId">
+        <div>
+            <input class="inputId" type="text" name="userId" placeholder="아이디">
+
+        </div>
+        <span>아이디는 6글자 이상 16글자 이하 영소문자+숫자여야합니다.</span>
+        <div>
+            <input class="inputPwd" type="password" name="pwd" placeholder="비밀번호">
+        </div>
+        <span>비밀번호는 8글자 이상 16글자 이하 영대문자, 영소문자, 숫자, 특수기호를 포함해야 합니다.</span>
+
+        <div>
+            <input class="inputName" type="text" name="name" placeholder="이름">
         </div>
 
-        <div class="inputPwd">
-            PASSWORD
-            <input type="password" name="pwd">
+        <div>
+            <input id="zonecode" type="text" name="postcode" placeholder="우편번호">
+            <input id="inputAddr1" type="text" name="address1" placeholder="주소">
         </div>
 
-        <div class="inputName">
-            NAME
-            <input type="text" name="name">
+        <div>
+            <input id="inputAddr2" type="text" name="address2" placeholder="상세주소">
         </div>
 
-        <div class="inputAddr">
-            ADDRESS
-            <input type="text" name="address">
+        <div>
+            <input class="inputPhone" type="text" name="phone" placeholder="전화번호">
         </div>
+        <span>숫자만 입력가능합니다.</span>
 
-        <div class="inputAddr">
-            PHONE
-            <input type="text" name="phone">
+        <div>
+            <input class="inputEmail" type="text" name="email" placeholder="이메일">
         </div>
-
-        <div class="inputEmail">
-            EMAIL
-            <input type="text" name="email">
+        <span>"awesome123@naver.com"과 같은 형식으로 입력해주세요.</span>
+        <div>
+            <input class="inputBirth" type="text" name="birth" placeholder="생일">
         </div>
+        <span>"001122"와 같이 6자리로 입력해주세요.</span>
 
-        <div class="inputBirth">
-            BIRTH
-            <input type="text" name="birth">
+        <div>
+            <input class="signUpSubmit" type="submit" value="회원가입">
         </div>
-
-        <input class="signUpSubmit" type="submit" value="JOIN">
     </form>
-
+    </div>
     <div class="footer" th:replace="/footer :: footer"></div>
 </body>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+    window.onload = function(){
+        document.getElementById("zonecode").addEventListener("click", function(){
+            new daum.Postcode({
+                oncomplete: function(data) {
+                    document.getElementById("zonecode").value = data.zonecode;
+                    document.getElementById("inputAddr1").value = data.address;
+                    document.getElementById("inputAddr2").focus();
+                }
+            }).open();
+        });
+    }
+</script>
 </html>

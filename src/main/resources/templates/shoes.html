@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/footer.css">
     <link rel="stylesheet" href="/css/shoes.css">
+    <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
 <div th:replace="/header :: header"></div>
@@ -22,9 +23,16 @@
                     <img th:src="@{'/images/' + ${shoes.productMainName}}" class="shoes-img">
                 </a>
             </div>
-            <div class="shoes-product-name" th:text="'상품명  ' + ${shoes.productName}">상품명</div>
-            <div th:text="가격 + ${shoes.productPrice}">가격</div>
-            <div th:text="구매건수 + ${shoes.orderCount}"></div>
+            <div class="main-product-info">
+                <span class="content" th:text="${shoes.productName}">상품명 내용</span>
+            </div>
+            <div class="main-product-info">
+                <span class="content" th:text="'&#8361; ' + ${shoes.productPrice} + '원'">가격 내용</span>
+            </div>
+            <div class="main-product-ordered">
+                <span class="label">구매건수:</span>
+                <span class="content" th:text="' ' + ${shoes.orderCount} + '건'">구매건수 내용</span>
+            </div>
         </div>
     </div>
 
