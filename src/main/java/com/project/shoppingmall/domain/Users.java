@@ -28,8 +28,14 @@ public class Users {
     @Column(nullable = false, name="user_name")
     private String name;
 
-    @Column(nullable = false, name="user_address")
-    private String address;
+    @Column(nullable = false, name="user_postcode")
+    private String postcode;
+
+    @Column(nullable = false, name="user_address1")
+    private String address1;
+
+    @Column(nullable = false, name="user_address2")
+    private String address2;
 
     @Column(nullable = false, name="user_phone")
     private String phone;
@@ -47,11 +53,13 @@ public class Users {
 
     }
 
-    public Users(String userId, String pwd, String name, String address, String phone, String email, String birth) {
+    public Users(String userId, String pwd, String name, String postcode, String address1, String address2, String phone, String email, String birth) {
         this.userId = userId;
         this.pwd = pwd;
         this.name = name;
-        this.address = address;
+        this.postcode = postcode;
+        this.address1 = address1;
+        this.address2 = address2;
         this.phone = phone;
         this.email = email;
         this.birth = birth;

@@ -47,23 +47,31 @@ public class OrderController {
     }
 
     @GetMapping("/paymentend")
-    public String paymentComp() {
+    public String paymentComp(Model model, HttpSession session) {
+        Long productId = (Long) session.getAttribute("productId");
+        String userId = (String)session.getAttribute("userId");
+        Users users = usersService.findUser(userId);
+        Product product = productService.productDetails(productId);
+        model.addAttribute("users", users);
+        model.addAttribute("product", product);
+
         return "/paymentend";
     }
 
     @PostMapping("/paymentend")
     public String paymentEnd(@RequestParam("orderNum") String orderNum,
                              @RequestParam("userId") String userId,
-                             @RequestParam("productId") Long productId) {
+                             @RequestParam("productId") Long productId,
+                             HttpSession session) {
         Users users = usersService.findUser(userId);
         Product product = productService.productDetails(productId);
-        Orders orders = new Orders(orderNum, users.getUserId(), users.getName(), users.getAddress(), product.getProductId(), product.getProductName(), product.getProductPrice());
+        Orders orders = new Orders(orderNum, users.getUserId(), users.getName(), users.getPostcode(), users.getAddress1(), users.getAddress2(), product.getProductId(), product.getProductName(), product.getProductPrice());
         OrderCountDTO orderCountDTO = new OrderCountDTO();
         orderCountDTO.setOrderCount(product.getOrderCount() + 1);
         productService.updateProductOrdered(productId, orderCountDTO);
         orderService.saveOrder(orders);
+        session.setAttribute("productId", productId);
 
-
-        return "/paymentend";
+        return "redirect:/paymentend";
     }
 }

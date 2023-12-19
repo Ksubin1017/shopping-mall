@@ -9,7 +9,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Getter
 @ToString
@@ -26,7 +26,13 @@ public class Orders {
     private String userName;
 
     @Column(nullable = false)
-    private String address;
+    private String postcode;
+
+    @Column(nullable = false)
+    private String address1;
+
+    @Column(nullable = false)
+    private String address2;
 
     @Column(nullable = false)
     private Long productId;
@@ -40,21 +46,23 @@ public class Orders {
     @DateTimeFormat(iso=DateTimeFormat.ISO.DATE_TIME)
     @Column(updatable = false)
     @CreatedDate
-    private LocalDateTime orderCreatedAt;
+    private LocalDate orderCreatedAt;
 
     private String orderStatus;
 
     protected Orders() {}
 
-    public Orders(String orderNum, String userId, String userName, String address, Long productId, String productName, String productPrice) {
+    public Orders(String orderNum, String userId, String userName, String postcode, String address1, String address2, Long productId, String productName, String productPrice) {
         this.orderNum = orderNum;
         this.userId = userId;
         this.userName = userName;
-        this.address = address;
+        this.postcode = postcode;
+        this.address1 = address1;
+        this.address2 = address2;
         this.productId = productId;
         this.productName = productName;
         this.productPrice = productPrice;
-        this.orderCreatedAt = LocalDateTime.now();
+        this.orderCreatedAt = LocalDate.now();
         this.orderStatus = "X";
     }
 
