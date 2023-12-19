@@ -9,9 +9,19 @@
 </head>
 <body>
 <div th:replace="/header :: header"></div>
+<div class="order-status">
+    <strong>
+        <a class="order-notComp" href="/adminOrderNotComp">주문 미처리</a>
+    </strong>
+    &nbsp;&nbsp;
+    <a href="/adminOrderComp">주문 처리 완료</a>
+</div>
 <div class="pageinfo">
     상품 등록
 </div>
+
+
+
 <div class="productEnroll-container">
     <form method="post" action="/productEnroll", enctype="multipart/form-data">
         상품 이름
