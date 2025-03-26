@@ -23,7 +23,6 @@ public class OrderController {
     private final UsersService usersService;
     private final ProductService productService;
 
-    @Autowired
     public OrderController(OrderService orderService, UsersService usersService, ProductService productService) {
         this.orderService = orderService;
         this.usersService = usersService;
@@ -36,13 +35,13 @@ public class OrderController {
 
         if(userId == null || userId.equals("anonymousUser")) {
 
-            return "/loginForm";
+            return "loginForm";
         } else {
             Users users = usersService.findUser(userId);
             Product product = productService.productDetails(productId);
             model.addAttribute("product", product);
             model.addAttribute("users", users);
-            return "/payment";
+            return "payment";
         }
     }
 
@@ -55,7 +54,7 @@ public class OrderController {
         model.addAttribute("users", users);
         model.addAttribute("product", product);
 
-        return "/paymentend";
+        return "paymentend";
     }
 
     @PostMapping("/paymentend")
@@ -63,15 +62,10 @@ public class OrderController {
                              @RequestParam("userId") String userId,
                              @RequestParam("productId") Long productId,
                              HttpSession session) {
-        Users users = usersService.findUser(userId);
-        Product product = productService.productDetails(productId);
-        Orders orders = new Orders(orderNum, users.getUserId(), users.getName(), users.getPostcode(), users.getAddress1(), users.getAddress2(), product.getProductId(), product.getProductName(), product.getProductPrice());
-        OrderCountDTO orderCountDTO = new OrderCountDTO();
-        orderCountDTO.setOrderCount(product.getOrderCount() + 1);
-        productService.updateProductOrdered(productId, orderCountDTO);
-        orderService.saveOrder(orders);
+        orderService.saveOrder(userId, productId, orderNum);
+
         session.setAttribute("productId", productId);
 
-        return "redirect:/paymentend";
+        return "redirect:paymentend";
     }
 }

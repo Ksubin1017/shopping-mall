@@ -11,8 +11,8 @@ import java.util.List;
 @Repository
 public interface ReviewRepository extends JpaRepository<Review, String> {
 
-    Page<Review> findByProductId(Long productId, Pageable pageable);
-    List<Review> findByUserIdOrderByReviewCreatedAtDesc(String userId);
+    Page<Review> findByProductIdOrderByReviewCreatedAtDesc(Long productId, Pageable pageable);
+//    List<Review> findByUserIdOrderByReviewCreatedAtDesc(String userId);
 
     void deleteByReviewNum(Long reviewNum);
 

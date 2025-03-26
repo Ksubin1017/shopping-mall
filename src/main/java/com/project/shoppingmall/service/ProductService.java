@@ -1,11 +1,13 @@
 package com.project.shoppingmall.service;
 
 import com.project.shoppingmall.domain.Product;
+import com.project.shoppingmall.dto.BestNewDTO;
 import com.project.shoppingmall.dto.OrderCountDTO;
 import com.project.shoppingmall.dto.ProductDTO;
 import com.project.shoppingmall.repository.ProductRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -16,17 +18,20 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
+import java.util.concurrent.locks.ReentrantLock;
 
 @Service
+@Slf4j
 public class ProductService {
 
     @Value("${upload.path}")
     private String uploadPath;
 
     private final ProductRepository productRepository;
+    private final ReentrantLock lock = new ReentrantLock();
 
-    @Autowired
     public ProductService(ProductRepository productRepository) {
+
         this.productRepository = productRepository;
     }
 
@@ -101,11 +106,17 @@ public class ProductService {
         product.updateProductOrdered(ordercountDTO.getOrderCount());
     }
 
-    public List<Product> bestProduct() {
-        return productRepository.findTop8ByOrderByOrderCountDesc();
+    @Cacheable(value = "bestNew")
+    public BestNewDTO bestNewProduct() {
+        BestNewDTO bestNewDTO = new BestNewDTO();
+        List<Product> bestProducts = productRepository.findTop8ByOrderByOrderCountDesc();
+        List<Product> newProduct = productRepository.findTop8ByOrderByProductCreadtedAtDesc();
+
+        bestNewDTO.setBestProducts(bestProducts);
+        bestNewDTO.setNewProducts(newProduct);
+
+
+        return bestNewDTO;
     }
 
-    public List<Product> newProduct() {
-        return productRepository.findTop8ByOrderByProductCreadtedAtDesc();
-    }
 }

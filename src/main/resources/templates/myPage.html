@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/css/myPage.css">
 </head>
 <body>
-<div th:replace="/header :: header"></div>
+<div class="header" th:replace="~{header :: header}"></div>
     <main>
         <div class="myPage-container">
         <div class="ordered">
@@ -50,6 +50,6 @@
         </div>
         </div>
     </main>
-<div class="footer" th:replace="/footer :: footer"></div>
+<div class="footer" th:replace="~{footer :: footer}"></div>
 </body>
 </html>

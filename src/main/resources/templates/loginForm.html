@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/css/login.css">
 </head>
 <body>
-    <div th:replace="/header :: header"></div>
+<div class="header" th:replace="~{header :: header}"></div>
 
     <div class="pageInfo">
         AWESOME
@@ -32,6 +32,6 @@
       </div>
     </form>
 
-    <div class="footer" th:replace="/footer :: footer"></div>
+<div class="footer" th:replace="~{footer :: footer}"></div>
 </body>
 </html>

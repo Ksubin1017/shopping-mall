@@ -8,12 +8,12 @@
     <link rel="stylesheet" href="/css/details.css">
 </head>
 <body>
-    <div th:replace="/header :: header"></div>
+<div class="header" th:replace="~{header :: header}"></div>
 
     <main class="productDetails">
       <div class="productInfo-container">
         <div class="detailsImg-container">
-            <img th:src="@{'/images/' + ${product.productInfoName}}" class="detail-img">
+            <img th:src="@{'/photo/' + ${product.productInfoName}}" class="detail-img">
         </div>
 
         <div class="productName-container">
@@ -59,7 +59,7 @@
                     <div class="description-name" th:text="${product.productName}"></div>
                   </strong>
                   <div class="productDescriptionImg">
-                      <img th:src="@{'/images/' + ${product.productInfoName}}" class="detail-info-img">
+                      <img th:src="@{'/photo/' + ${product.productInfoName}}" class="detail-info-img">
                   </div>
 
               </div>
@@ -71,6 +71,6 @@
 
     </main>
 
-    <div class="footer" th:replace="/footer :: footer"></div>
+<div class="footer" th:replace="~{footer :: footer}"></div>
 </body>
 </html>

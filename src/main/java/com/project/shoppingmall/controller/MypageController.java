@@ -20,7 +20,6 @@ public class MypageController {
     private final OrderService orderService;
     private final ReviewService reviewService;
 
-    @Autowired
     public MypageController(OrderService orderService, ReviewService reviewService) {
         this.orderService = orderService;
         this.reviewService = reviewService;
@@ -31,11 +30,11 @@ public class MypageController {
         String userId = (String)session.getAttribute("userId");
 
         List<Orders> ordersList = orderService.findOrder(userId);
-        List<Review> reviewList = reviewService.findReviewUserId(userId);
+//        List<Review> reviewList = reviewService.findReviewUserId(userId);
 
         model.addAttribute("orders", ordersList);
-        model.addAttribute("review", reviewList);
-        return "/myPage";
+//        model.addAttribute("review", reviewList);
+        return "myPage";
     }
 
     @PostMapping("/reviewDel")
@@ -43,6 +42,6 @@ public class MypageController {
 
         Long reviewNum = reviewService.getLongReviewNum(rawReviewNum);
         reviewService.reviewDel(reviewNum);
-        return "/reviewDel";
+        return "reviewDel";
     }
 }

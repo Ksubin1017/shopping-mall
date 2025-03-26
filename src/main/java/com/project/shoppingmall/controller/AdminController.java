@@ -27,10 +27,16 @@ public class AdminController {
 
         int nowPage = orderComp.getPageable().getPageNumber() + 1;  // 사용자에게 보여주기 위한 숫자
         int startPage = Math.max(nowPage - 2, 1);   // 페이징의 첫번째 목록
-        int endPage = Math.min(startPage + 4, orderComp.getTotalPages());
+        int endPage = 0;   // 페이징의 마지막 목록
         int previousPage = Math.max(nowPage - 2, 0);        //  -1 은 페이징 상의 현재, -2 페이징 상의 전 페이지
         int nextPage = Math.min(nowPage, orderComp.getTotalPages() - 1);   // 페이지 사
         int firstPage = 0;
+
+        if(startPage < 2) {
+            endPage = 5;
+        } else {
+            endPage = Math.min(nowPage + 2, orderComp.getTotalPages());
+        }
 
         model.addAttribute("orderComp", orderComp);
         model.addAttribute("nowPage", nowPage);
@@ -40,7 +46,7 @@ public class AdminController {
         model.addAttribute("nextPage", nextPage);
         model.addAttribute("firstPage", firstPage);
 
-        return "/adminOrderComp";
+        return "adminOrderComp";
     }
 
     @GetMapping("/adminOrderNotComp")
@@ -49,10 +55,16 @@ public class AdminController {
 
         int nowPage = orderNotComp.getPageable().getPageNumber() + 1;  // 사용자에게 보여주기 위한 숫자
         int startPage = Math.max(nowPage - 2, 1);   // 페이징의 첫번째 목록
-        int endPage = Math.min(startPage + 4, orderNotComp.getTotalPages());
+        int endPage = 0;   // 페이징의 마지막 목록
         int previousPage = Math.max(nowPage - 2, 0);        //  -1 은 페이징 상의 현재, -2 페이징 상의 전 페이지
         int nextPage = Math.min(nowPage, orderNotComp.getTotalPages() - 1);   // 페이지 사
         int firstPage = 0;
+
+        if(startPage < 2) {
+            endPage = 5;
+        } else {
+            endPage = Math.min(nowPage + 2, orderNotComp.getTotalPages());
+        }
 
         model.addAttribute("orderNotComp", orderNotComp);
         model.addAttribute("nowPage", nowPage);
@@ -62,7 +74,7 @@ public class AdminController {
         model.addAttribute("nextPage", nextPage);
         model.addAttribute("firstPage", firstPage);
 
-        return "/adminOrderNotComp";
+        return "adminOrderNotComp";
     }
 
     @PostMapping("/orderComplete")
@@ -70,7 +82,7 @@ public class AdminController {
         OrderDTO orderDTO = new OrderDTO();
         orderDTO.setOrderStatus("O");
         orderService.updateOrderStatus(orderNum, orderDTO);
-        return "/orderComplete";
+        return "orderComplete";
 
     }
 }

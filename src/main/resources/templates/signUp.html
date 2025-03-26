@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/css/signUp.css">
 </head>
 <body>
-<div th:replace="/header :: header"></div>
+<div class="header" th:replace="~{header :: header}"></div>
     <div class="signUp-container">
     <div class="pageInfo">
         AWESOME
@@ -58,7 +58,7 @@
         </div>
     </form>
     </div>
-    <div class="footer" th:replace="/footer :: footer"></div>
+<div class="footer" th:replace="~{footer :: footer}"></div>
 </body>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>

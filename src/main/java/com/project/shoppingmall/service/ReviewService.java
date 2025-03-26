@@ -25,12 +25,12 @@ public class ReviewService {
     }
 
     public Page<Review> findReview(Long productId, Pageable pageable) {
-        return reviewRepository.findByProductId(productId, pageable);
+        return reviewRepository.findByProductIdOrderByReviewCreatedAtDesc(productId, pageable);
     }
 
-    public List<Review> findReviewUserId(String userId) {
-        return reviewRepository.findByUserIdOrderByReviewCreatedAtDesc(userId);
-    }
+//    public List<Review> findReviewUserId(String userId) {
+//        return reviewRepository.findByUserIdOrderByReviewCreatedAtDesc(userId);
+//    }
 
     @Transactional
     public void reviewDel(Long reviewNum) {

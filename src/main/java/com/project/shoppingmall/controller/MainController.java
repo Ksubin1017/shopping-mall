@@ -1,6 +1,7 @@
 package com.project.shoppingmall.controller;
 
 import com.project.shoppingmall.domain.Product;
+import com.project.shoppingmall.dto.BestNewDTO;
 import com.project.shoppingmall.service.ProductService;
 import com.project.shoppingmall.service.UsersService;
 import org.springframework.security.core.Authentication;
@@ -29,11 +30,12 @@ public class MainController {
         String userId = authentication.getName();
         session.setAttribute("userId", userId);
 
-        List<Product> bestProduct = productService.bestProduct();
-        List<Product> newProduct = productService.newProduct();
+//        List<Product> bestProduct = productService.bestProduct();
+//        List<Product> newProduct = productService.newProduct();
 
-        model.addAttribute("bestProduct", bestProduct);
-        model.addAttribute("newProduct", newProduct);
-        return "/main";
+        BestNewDTO bestNewDTO = productService.bestNewProduct();
+        model.addAttribute("bestNewProduct", bestNewDTO);
+
+        return "main";
     }
 }

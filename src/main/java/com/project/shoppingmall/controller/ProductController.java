@@ -25,7 +25,6 @@ public class ProductController {
     private final ProductService productService;
 
 
-    @Autowired
     public ProductController(ProductService productService) {
         this.productService = productService;
     }
@@ -33,13 +32,13 @@ public class ProductController {
     @GetMapping("/best")
     public String best() {
 
-        return "/best";
+        return "best";
     }
 
     @GetMapping("/newPage")
     public String newpage() {
 
-        return "/newPage";
+        return "newPage";
     }
 
     @GetMapping("/outer")
@@ -49,10 +48,16 @@ public class ProductController {
 
         int nowPage = outerList.getPageable().getPageNumber() + 1;  // 사용자에게 보여주기 위한 숫자
         int startPage = Math.max(nowPage - 2, 1);   // 페이징의 첫번째 목록
-        int endPage = Math.min(startPage + 4, outerList.getTotalPages());
+        int endPage = 0;   // 페이징의 마지막 목록
         int previousPage = Math.max(nowPage - 2, 0);        //  -1 은 페이징 상의 현재, -2 페이징 상의 전 페이지
-        int nextPage = Math.min(nowPage, outerList.getTotalPages() - 1);
+        int nextPage = Math.min(nowPage, outerList.getTotalPages() - 1);   // 페이지 사
         int firstPage = 0;
+
+        if(startPage < 2) {
+            endPage = 5;
+        } else {
+            endPage = Math.min(nowPage + 2, outerList.getTotalPages());
+        }
 
         model.addAttribute("outer", outerList);
         model.addAttribute("nowPage", nowPage);
@@ -61,7 +66,7 @@ public class ProductController {
         model.addAttribute("previousPage", previousPage);
         model.addAttribute("nextPage", nextPage);
         model.addAttribute("firstPage", firstPage);
-        return "/outer";
+        return "outer";
     }
 
     @GetMapping("/top")
@@ -88,7 +93,7 @@ public class ProductController {
         model.addAttribute("previousPage", previousPage);
         model.addAttribute("nextPage", nextPage);
         model.addAttribute("firstPage", firstPage);
-        return "/top";
+        return "top";
     }
 
     @GetMapping("/pants")
@@ -115,7 +120,7 @@ public class ProductController {
         model.addAttribute("previousPage", previousPage);
         model.addAttribute("nextPage", nextPage);
         model.addAttribute("firstPage", firstPage);
-        return "/pants";
+        return "pants";
     }
 
     @GetMapping("/shoes")
@@ -142,7 +147,7 @@ public class ProductController {
         model.addAttribute("previousPage", previousPage);
         model.addAttribute("nextPage", nextPage);
         model.addAttribute("firstPage", firstPage);
-        return "/shoes";
+        return "shoes";
     }
 
     @GetMapping("/acc")
@@ -169,13 +174,13 @@ public class ProductController {
         model.addAttribute("previousPage", previousPage);
         model.addAttribute("nextPage", nextPage);
         model.addAttribute("firstPage", firstPage);
-        return "/acc";
+        return "acc";
     }
 
     @GetMapping("/productEnroll")
     public String product() {
 
-        return "/productEnroll";
+        return "productEnroll";
     }
 
     //상품 등록
@@ -187,6 +192,6 @@ public class ProductController {
         Product product = new Product(productDTO.getProductName(), productDTO.getProductPrice(), productDTO.getProductCategory(), productDTO.getProductDescription(), productMainFileName, productInfoFileName);
 
         productService.saveProduct(product);
-        return "/main";
+        return "main";
     }
 }

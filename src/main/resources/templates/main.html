@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
-<div th:replace="/header :: header"></div>
+<div class="header" th:replace="~{header :: header}"></div>
 
 <main class="main-page">
     <h2>
@@ -16,10 +16,11 @@
     </h2>
 
     <div class="mainbest">
-        <div class="mainbest-li" th:each="bestProduct : ${bestProduct}">
+        <!-- bestProducts 리스트를 순회 -->
+        <div class="mainbest-li" th:each="bestProduct : ${bestNewProduct.bestProducts}">
             <div>
                 <a th:href="@{/details(productId=${bestProduct.productId})}">
-                    <img th:src="@{'/images/' + ${bestProduct.productMainName}}" class="main-best-img">
+                    <img th:src="@{'/photo/' + ${bestProduct.productMainName}}" class="main-best-img">
                 </a>
             </div>
             <div class="main-product-info">
@@ -35,17 +36,18 @@
         </div>
     </div>
 
-    <p>&nbsp</p>
-    <p>&nbsp</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
     <h2>
         <strong>NEW</strong>
     </h2>
 
     <div class="mainnew">
-        <div class="mainnew-li" th:each="newProduct : ${newProduct}">
+        <!-- newProducts 리스트를 순회 -->
+        <div class="mainnew-li" th:each="newProduct : ${bestNewProduct.newProducts}">
             <div>
                 <a th:href="@{/details(productId=${newProduct.productId})}">
-                    <img th:src="@{'/images/' + ${newProduct.productMainName}}" class="main-new-img">
+                    <img th:src="@{'/photo/' + ${newProduct.productMainName}}" class="main-new-img">
                 </a>
             </div>
             <div class="main-product-info">
@@ -60,9 +62,9 @@
             </div>
         </div>
     </div>
-
 </main>
 
-<div class="footer" th:replace="/footer :: footer"></div>
+<div class="footer" th:replace="~{footer :: footer}"></div>
+
 </body>
 </html>

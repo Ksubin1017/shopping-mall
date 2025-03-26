@@ -34,27 +34,27 @@ public class LoginController {
     @GetMapping("/signUp")
     public String signUp() {
 
-        return "/signUp";
+        return "signUp";
     }
 
     @GetMapping("/signUpInput")
     public String signUpInput() {
 
-        return "redirect:/signUp";
+        return "redirect:signUp";
     }
 
     @PostMapping("/signUpComp")
     public String signUpComp(@Valid UserDTO userDTO, BindingResult bindingResult,  @RequestParam String pwd) {
         if (bindingResult.hasErrors()) {
 
-            return "/signupError";
+            return "signupError";
         }
         String encPwd = bCryptPasswordEncoder.encode(pwd);
         userDTO.setPwd(encPwd);
         Users users = new Users(userDTO.getUserId(), encPwd, userDTO.getName(), userDTO.getPostcode(), userDTO.getAddress1(), userDTO.getAddress2(), userDTO.getPhone(), userDTO.getEmail(), userDTO.getBirth());
         usersService.saveUser(users);
 
-        return "/loginForm";
+        return "loginForm";
     }
 
     @GetMapping("/loginForm")
@@ -81,6 +81,6 @@ public class LoginController {
             new SecurityContextLogoutHandler().logout(request, response, authentication);
         }
 
-        return "/main";
+        return "main";
     }
 }

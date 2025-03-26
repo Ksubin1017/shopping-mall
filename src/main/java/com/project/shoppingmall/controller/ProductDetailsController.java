@@ -20,7 +20,6 @@ public class ProductDetailsController {
     private final ProductService productService;
     private final ReviewService reviewService;
 
-    @Autowired
     public ProductDetailsController(ProductService productService, ReviewService reviewService) {
         this.productService = productService;
         this.reviewService = reviewService;
@@ -42,14 +41,13 @@ public class ProductDetailsController {
         model.addAttribute("review", review);
         model.addAttribute("product", product);
         model.addAttribute("productId", productId);
-        model.addAttribute("review", review);
         model.addAttribute("nowPage", nowPage);
         model.addAttribute("startPage", startPage);
         model.addAttribute("endPage", endPage);
         model.addAttribute("previousPage", previousPage);
         model.addAttribute("nextPage", nextPage);
         model.addAttribute("firstPage", firstPage);
-        return "/details";
+        return "details";
     }
 
 }

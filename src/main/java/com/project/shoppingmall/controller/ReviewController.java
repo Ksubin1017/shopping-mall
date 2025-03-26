@@ -26,7 +26,6 @@ public class ReviewController {
     private final OrderService orderService;
     private final ProductService productService;
 
-    @Autowired
     public ReviewController(ReviewService reviewService, OrderService orderService, ProductService productService) {
         this.reviewService = reviewService;
         this.orderService = orderService;
@@ -37,7 +36,7 @@ public class ReviewController {
     public String writeReviewForm(Model model, @RequestParam("productId") Long productId) {
         Product product = productService.productDetails(productId);
         model.addAttribute("product", product);
-        return "/review";
+        return "review";
     }
 
     @PostMapping("/writeReview")
@@ -56,10 +55,10 @@ public class ReviewController {
             Review review = new Review(userId, productId, content);
             reviewService.saveReview(review);
 
-            return "/reviewComp";
+            return "reviewComp";
         }
 
-        return "/reviewError";
+        return "reviewError";
     }
 
 }

@@ -1,6 +1,10 @@
 spring:
+  cache:
+    type: caffeine # 캐시 제공자 설정 (Caffeine을 사용한다고 가정)
+    caffeine:
+      spec: expireAfterAccess=12h,maximumSize=1000
   datasource:
-    url: jdbc:mysql://localhost:3306/shopping-mall
+    url: jdbc:mysql://220.93.95.108:3306/shoppingmall
     username: ksubin
     password: 1396
     driver-class-name: com.mysql.jdbc.Driver
@@ -9,6 +13,10 @@ spring:
     defer-datasource-initialization: true
     hibernate.ddl-auto: update
     show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        generate_statistics: true
   servlet:
     multipart:
       max-file-size: 20MB
@@ -22,7 +30,7 @@ spring:
 
 
 upload:
-  path: D:/Intellij/workspace/shopping-mall/src/main/resources/static/images/
+  path: /home/ksubin/shoppingmall/photo/
 
 server:
   port: 8090

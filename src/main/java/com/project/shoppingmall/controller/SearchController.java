@@ -25,7 +25,7 @@ public class SearchController {
         List<Product> productList = productService.searchByname(keyword);
         model.addAttribute("productList", productList);
         model.addAttribute("keyword", keyword);
-        return "/search";
+        return "search";
     }
 
 

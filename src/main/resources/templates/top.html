@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
-<div th:replace="/header :: header"></div>
+<div class="header" th:replace="~{header :: header}"></div>
 
 <main class="top-page">
     <div class="pageinfo">
@@ -20,7 +20,7 @@
       <div class="top-li" th:each="top : ${top}">
         <div>
             <a th:href="@{/details(productId=${top.productId})}">
-                <img th:src="@{'/images/' + ${top.productMainName}}" class="top-img">
+                <img th:src="@{'/photo/' + ${top.productMainName}}" class="top-img">
             </a>
         </div>
           <div class="main-product-info">
@@ -44,6 +44,6 @@
     <a th:href="@{/top(page = ${nextPage})}" th:text="다음"></a>
 </main>
 
-<div class="footer" th:replace="/footer :: footer"></div>
+<div class="footer" th:replace="~{footer :: footer}"></div>
 </body>
 </html>
