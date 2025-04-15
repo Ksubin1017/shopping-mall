@@ -43,7 +43,7 @@ public class OrderService {
         orders.updateOrderStatus(orderDTO.getOrderStatus());
     }
 
-    public void saveOrder(String userId, Long productId, String orderNum) {
+    public synchronized void saveOrder(String userId, Long productId, String orderNum) {
         Users users = usersService.findUser(userId);
         Product product = productService.productDetails(productId);
         Orders orders = new Orders(orderNum, users.getUserId(), users.getName(), users.getPostcode(), users.getAddress1(), users.getAddress2(), product.getProductId(), product.getProductName(), product.getProductPrice());
@@ -54,4 +54,22 @@ public class OrderService {
 
         orderRepository.save(orders);
     }
+
+//    public void saveOrder(String userId, Long productId, String orderNum) {
+//        Users users = usersService.findUser(userId);
+//        Product product = productService.productDetails(productId);
+//
+//        Orders orders = new Orders(orderNum, users.getUserId(), users.getName(),
+//                users.getPostcode(), users.getAddress1(), users.getAddress2(),
+//                product.getProductId(), product.getProductName(), product.getProductPrice());
+//
+//        synchronized (product) {  // 🚨 특정 상품(productId) 단위로 동기화
+//            OrderCountDTO orderCountDTO = new OrderCountDTO();
+//            orderCountDTO.setOrderCount(product.getOrderCount() + 1);
+//            productService.updateProductOrdered(productId, orderCountDTO);
+//        }
+//
+//        orderRepository.save(orders);
+//    }
+
 }
