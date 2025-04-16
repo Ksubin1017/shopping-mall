@@ -101,10 +101,13 @@ public class ProductService {
     }
 
     @Transactional
-    public void updateProductOrdered(Long productId, OrderCountDTO ordercountDTO) {
-        Product product = productRepository.findByProductId(productId);
-        product.updateProductOrdered(ordercountDTO.getOrderCount());
+    public void updateProductOrdered(Long productId) {
+        Product product = productRepository.findByProductIdWithLock(productId); // 락 걸림
+
+        int currentCount = product.getOrderCount();
+        product.updateProductOrdered(currentCount + 1); // 변경감지로 update됨
     }
+
 
     @Cacheable(value = "bestNew")
     public BestNewDTO bestNewProduct() {

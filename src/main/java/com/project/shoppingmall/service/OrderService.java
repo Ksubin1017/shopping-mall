@@ -43,13 +43,13 @@ public class OrderService {
         orders.updateOrderStatus(orderDTO.getOrderStatus());
     }
 
-    public synchronized void saveOrder(String userId, Long productId, String orderNum) {
+    public void saveOrder(String userId, Long productId, String orderNum) {
         Users users = usersService.findUser(userId);
         Product product = productService.productDetails(productId);
         Orders orders = new Orders(orderNum, users.getUserId(), users.getName(), users.getPostcode(), users.getAddress1(), users.getAddress2(), product.getProductId(), product.getProductName(), product.getProductPrice());
         OrderCountDTO orderCountDTO = new OrderCountDTO();
         orderCountDTO.setOrderCount(product.getOrderCount() + 1);
-        productService.updateProductOrdered(productId, orderCountDTO);
+        productService.updateProductOrdered(productId);
 
 
         orderRepository.save(orders);
