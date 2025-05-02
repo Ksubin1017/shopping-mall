@@ -29,7 +29,7 @@ public class CacheConfig {
                 .name("bestNew")
                 .maxEntriesLocalHeap(1000)
                 .maxEntriesLocalDisk(0)
-                .eternal(false).timeToIdleSeconds(1800)
+                .eternal(false).timeToLiveSeconds(86400)
                 .timeToLiveSeconds(20)
                 .memoryStoreEvictionPolicy("LFU")
                 .transactionalMode(CacheConfiguration.TransactionalMode.OFF)
