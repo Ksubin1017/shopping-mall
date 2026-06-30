@@ -10,6 +10,9 @@ import java.util.List;
 @Setter
 public class BestNewDTO {
 
-    List<Product> bestProducts;
-    List<Product> newProducts;
+    List<BestDTO> bestProducts;
+    List<NewDTO> newProducts;
+
+    public BestNewDTO() {
+    }
 }

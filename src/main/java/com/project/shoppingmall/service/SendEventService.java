@@ -24,23 +24,20 @@ public class SendEventService {
     private final UsersRepository usersRepository;
 
     public long sendAll() {
-        ForkJoinPool commonPool = ForkJoinPool.commonPool();
-
-        int commonPoolSize = commonPool.getParallelism();
 
         List<Users> usersList = usersRepository.findAll();
         long start = System.currentTimeMillis();
 
         // 동기
-        usersList.forEach(users -> sendEvent("봄 맞이 30% 할인 쿠폰"));
+//        usersList.forEach(users -> sendEvent("봄 맞이 30% 할인 쿠폰"));
 
-        // 비동기
-//        usersList.forEach(users ->
-//                CompletableFuture.runAsync(() -> sendEvent("봄 맞이 30% 할인 쿠폰"), customThreadPool)
-//                        .exceptionally(throwable -> {
-//                            log.error("Exception occurred while sending event", throwable.getMessage());
-//                            return null;
-//                        }));
+//         비동기
+        usersList.forEach(users ->
+                CompletableFuture.runAsync(() -> sendEvent("봄 맞이 30% 할인 쿠폰"), customThreadPool)
+                        .exceptionally(throwable -> {
+                            log.error("Exception occurred while sending event", throwable.getMessage());
+                            return null;
+                        }));
 
         long end = System.currentTimeMillis();
         long diff = end - start;
@@ -50,7 +47,7 @@ public class SendEventService {
 
     public void sendEvent(String message) {
         try {
-            Thread.sleep(1);
+            Thread.sleep(10);
             log.info("message: " + message);
         } catch(Exception e) {
             log.error("[Error] : {}", e.getMessage());

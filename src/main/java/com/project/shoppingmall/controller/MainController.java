@@ -1,6 +1,7 @@
 package com.project.shoppingmall.controller;
 
 import com.project.shoppingmall.domain.Product;
+import com.project.shoppingmall.dto.BestDTO;
 import com.project.shoppingmall.dto.BestNewDTO;
 import com.project.shoppingmall.service.ProductService;
 import com.project.shoppingmall.service.UsersService;
@@ -34,6 +35,7 @@ public class MainController {
 //        List<Product> newProduct = productService.newProduct();
 
         BestNewDTO bestNewDTO = productService.bestNewProduct();
+
         model.addAttribute("bestNewProduct", bestNewDTO);
 
         return "main";

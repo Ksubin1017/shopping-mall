@@ -1,9 +1,7 @@
 package com.project.shoppingmall.service;
 
 import com.project.shoppingmall.domain.Product;
-import com.project.shoppingmall.dto.BestNewDTO;
-import com.project.shoppingmall.dto.OrderCountDTO;
-import com.project.shoppingmall.dto.ProductDTO;
+import com.project.shoppingmall.dto.*;
 import com.project.shoppingmall.repository.ProductRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -19,6 +17,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.locks.ReentrantLock;
+import java.util.stream.Collectors;
 
 @Service
 @Slf4j
@@ -109,15 +108,23 @@ public class ProductService {
     }
 
 
-    @Cacheable(value = "bestNew")
+    @Cacheable(cacheNames = "getBest", key = "'best'", cacheManager= "bestCacheManager")
     public BestNewDTO bestNewProduct() {
         BestNewDTO bestNewDTO = new BestNewDTO();
         List<Product> bestProducts = productRepository.findTop8ByOrderByOrderCountDesc();
+
         List<Product> newProduct = productRepository.findTop8ByOrderByProductCreadtedAtDesc();
 
-        bestNewDTO.setBestProducts(bestProducts);
-        bestNewDTO.setNewProducts(newProduct);
+        List<BestDTO> bestProductDTOs = bestProducts.stream()
+                .map(BestDTO::new)
+                .collect(Collectors.toList());
 
+        List<NewDTO> newProductDTOs = newProduct.stream()
+                .map(NewDTO::new)
+                .collect(Collectors.toList());
+
+        bestNewDTO.setBestProducts(bestProductDTOs);
+        bestNewDTO.setNewProducts(newProductDTOs);
 
         return bestNewDTO;
     }
