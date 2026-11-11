@@ -18,14 +18,14 @@ public class Review {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long reviewNum;
 
-    @Column(nullable = false)
-    private String userId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Users users;
 
     @Column(nullable = false)
     private String content;
 
-    @Column(nullable = false)
-    private Long productId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Product product;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(updatable = false)
